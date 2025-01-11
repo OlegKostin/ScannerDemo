@@ -13,28 +13,50 @@ val Oswald = FontFamily(
   Font(R.font.oswald_bold, FontWeight.Bold)
 )
 // Set of Material typography styles to start with
+// Set of Material typography styles to start with
 val Typography = Typography(
+  displayLarge = TextStyle(
+    fontWeight = FontWeight.Bold,
+    fontFamily = Oswald,
+    fontSize = 32.sp,
+    lineHeight = 40.sp
+  ),
+  displayMedium = TextStyle(
+    fontWeight = FontWeight.Normal,
+    fontFamily = Oswald,
+    fontSize = 32.sp,
+    lineHeight = 40.sp
+  ),
+  headlineSmall = TextStyle(
+    fontFamily = Oswald,
+    fontSize = 20.sp,
+    fontWeight = FontWeight.Normal,
+    lineHeight = 28.sp
+  ),
   bodyLarge = TextStyle(
-    fontFamily = FontFamily.Default,
+    fontFamily = Oswald,
     fontWeight = FontWeight.Normal,
     fontSize = 16.sp,
-    lineHeight = 24.sp,
-    letterSpacing = 0.5.sp
-  )
+    lineHeight = 24.sp
+  ),
+  labelLarge = TextStyle(
+    fontFamily = Oswald,
+    fontWeight = FontWeight.Normal,
+    fontSize = 16.sp,
+    lineHeight = 20.sp
+  ),
+  bodyMedium = TextStyle(
+    fontFamily = Oswald,
+    fontWeight = FontWeight.Normal,
+    fontSize = 14.sp,
+    lineHeight = 20.sp
+  ),
   /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    )
-    */
+  labelSmall = TextStyle(
+      fontFamily = FontFamily.Default,
+      fontWeight = FontWeight.Normal,
+      fontSize = 12.sp,
+      lineHeight = 16.sp
+  )
+  */
 )
