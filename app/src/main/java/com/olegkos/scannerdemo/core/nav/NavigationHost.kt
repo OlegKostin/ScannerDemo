@@ -5,9 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.olegkos.serialdecoder.decoding.ui.HomeScreen
-import com.olegkos.serialdecoder.faq.ui.FAQScreen
-import com.olegkos.serialdecoder.onboarding.ui.OnBoardingScreen
+
 
 @Composable
 fun NavigationHost(modifier: Modifier = Modifier) {
@@ -18,19 +16,13 @@ fun NavigationHost(modifier: Modifier = Modifier) {
         startDestination = Route.OnBoarding
     ){
         composable<Route.OnBoarding> {
-            OnBoardingScreen(
 
-            )
         }
         composable<Route.FAQ> {
-            FAQScreen(
 
-            )
         }
         composable<Route.Home> {
-            HomeScreen(
 
-            )
         }
     }
     
