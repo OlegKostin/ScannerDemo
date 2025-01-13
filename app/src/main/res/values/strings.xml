@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ScannerDemo</string>
+    <string name="onboarding_select_brand_image">Onboarding Image of Selecting a Brand</string>
+    <string name="select_a_brand">Select a Brand</string>
+    <string name="onboarding_message_one">Choose the brand you use from our list of existing brands</string>
+    <string name="onboarding_insert_serial_number_image">Image of Insert Serial Number</string>
 </resources>
