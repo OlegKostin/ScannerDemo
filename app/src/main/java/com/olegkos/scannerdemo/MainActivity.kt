@@ -16,23 +16,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.olegkos.scannerdemo.ui.theme.ScannerDemoTheme
+import com.olegkos.serialdecoder.core.nav.NavigationHost
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
     setContent {
-      ScannerDemoTheme {
-        Column (modifier = Modifier.fillMaxSize(),
-          verticalArrangement = Arrangement.Center,
-          horizontalAlignment = Alignment.CenterHorizontally){
-          Button(onClick = {}) {
-            Text(text = "this is the test text")
-          }
-        }
-      }
+      ScannerScreen()
     }
   }
 }
 
+@Composable
+fun ScannerScreen(modifier: Modifier = Modifier) {
+  ScannerDemoTheme {
+    NavigationHost(modifier = modifier)
+  }
 
+}
