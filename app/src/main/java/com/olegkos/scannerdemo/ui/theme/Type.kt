@@ -18,38 +18,31 @@ val Typography = Typography(
   displayLarge = TextStyle(
     fontWeight = FontWeight.Bold,
     fontFamily = Oswald,
-    fontSize = 32.sp,
-    lineHeight = 40.sp
+    fontSize = 32.sp
   ),
   displayMedium = TextStyle(
     fontWeight = FontWeight.Normal,
     fontFamily = Oswald,
-    fontSize = 32.sp,
-    lineHeight = 40.sp
+    fontSize = 32.sp
   ),
-  headlineSmall = TextStyle(
-    fontFamily = Oswald,
-    fontSize = 20.sp,
-    fontWeight = FontWeight.Normal,
-    lineHeight = 28.sp
+  headlineLarge = TextStyle(
+    fontFamily = Oswald, fontSize = 20.sp,
+    fontWeight = FontWeight.Normal
   ),
   bodyLarge = TextStyle(
     fontFamily = Oswald,
     fontWeight = FontWeight.Normal,
-    fontSize = 16.sp,
-    lineHeight = 24.sp
+    fontSize = 16.sp
   ),
   labelLarge = TextStyle(
     fontFamily = Oswald,
     fontWeight = FontWeight.Normal,
-    fontSize = 16.sp,
-    lineHeight = 20.sp
+    fontSize = 16.sp
   ),
-  bodyMedium = TextStyle(
+  titleMedium = TextStyle(
     fontFamily = Oswald,
     fontWeight = FontWeight.Normal,
-    fontSize = 14.sp,
-    lineHeight = 20.sp
+    fontSize = 14.sp
   ),
   /* Other default text styles to override
   labelSmall = TextStyle(

@@ -15,9 +15,9 @@ import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
 @Composable
 fun OnBoardingHeader(modifier: Modifier = Modifier, @StringRes headerId: Int) {
   Text(
-    modifier = modifier.padding(horizontal = FOUR_TIMES_SPACING, vertical = NORMAL_SPACING),
+    modifier = modifier,
     textAlign = TextAlign.Center,
     text = stringResource(id = headerId),
-    style = MaterialTheme.typography.titleLarge
+    style = MaterialTheme.typography.displayLarge
   )
 }

@@ -3,16 +3,23 @@ package com.olegkos.scannerdemo.feature_onboarding.ui.components
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import com.olegkos.scannerdemo.R
+import com.olegkos.scannerdemo.core.utils.DOUBLE_SPACING
 import com.olegkos.scannerdemo.core.utils.FOUR_TIMES_SPACING
+import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
 import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SIZE
 import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SPACING
+import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.NavigationDotIndicator
+import com.olegkos.scannerdemo.ui.theme.ScannerDemoTheme
 
 @Composable
 fun OnBoardingContent(
@@ -22,11 +29,16 @@ fun OnBoardingContent(
   @StringRes headerContent: Int,
   imageSize: Dp = ONBOARDING_IMAGE_SIZE,
   @StringRes subtitleContent: Int,
+  selectedPage: Int,
 ) {
   Column(
-    modifier = Modifier
-      .padding(top = ONBOARDING_IMAGE_SPACING)
-      .padding(FOUR_TIMES_SPACING)
+    modifier = modifier
+      .padding(
+        top = ONBOARDING_IMAGE_SPACING,
+        start = FOUR_TIMES_SPACING,
+        end = FOUR_TIMES_SPACING,
+        bottom = FOUR_TIMES_SPACING
+      )
       .fillMaxSize(),
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
@@ -35,10 +47,34 @@ fun OnBoardingContent(
       contentDesResId = descContent,
       size = imageSize
     )
-    OnBoardingHeader(headerId = headerContent)
-    OnBoardingSubTitle(
+    OnBoardingHeader(
+      modifier = modifier.padding(NORMAL_SPACING),
+      headerId = headerContent
+    )
+    OnBoardingSubtitle(
+      modifier = modifier.padding(DOUBLE_SPACING),
       subtitleId = subtitleContent
     )
-    DotsIndicator()
+    Spacer(modifier = Modifier.weight(1f))
+    NavigationDotIndicator(
+      currentPage = selectedPage
+    )
   }
+}
+
+@Preview
+@Composable
+private fun OnBoardingContentPreview() {
+  ScannerDemoTheme {
+    OnBoardingContent(
+      imageResId = R.drawable.onboarding_image_one,
+      headerContent = R.string.select_a_brand,
+      descContent = R.string.onboarding_select_brand_image,
+      subtitleContent = R.string.onboarding_message_one,
+      selectedPage = 1,
+    )
+
+  }
+
+
 }

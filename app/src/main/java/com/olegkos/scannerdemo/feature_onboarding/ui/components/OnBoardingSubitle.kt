@@ -11,11 +11,11 @@ import androidx.compose.ui.text.style.TextAlign
 import com.olegkos.scannerdemo.core.utils.FOUR_TIMES_SPACING
 
 @Composable
-fun OnBoardingSubTitle(modifier: Modifier = Modifier, @StringRes subtitleId: Int) {
+fun OnBoardingSubtitle(modifier: Modifier = Modifier, @StringRes subtitleId: Int) {
   Text(
-    modifier = modifier.padding(horizontal = FOUR_TIMES_SPACING),
+    modifier = modifier,
     text = stringResource(id = subtitleId),
     textAlign = TextAlign.Center,
-    style = MaterialTheme.typography.titleSmall
+    style = MaterialTheme.typography.bodyLarge
   )
 }
