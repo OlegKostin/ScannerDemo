@@ -8,5 +8,6 @@
     <string name="onboarding_message_two">Insert Serial Number found on your device, or you can scan QR code using our app</string>
     <string name="onboarding_message_three">After adding the serial number, our app will provide details about your device such as manufactored origin, and date of manufactor</string>
     <string name="onboarding_view_details_about_device_image">Image of viewing the details of a device</string>
+    <string name="get_started">Get Started</string>
 
 </resources>

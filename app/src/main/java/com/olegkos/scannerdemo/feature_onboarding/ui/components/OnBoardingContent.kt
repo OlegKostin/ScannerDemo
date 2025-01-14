@@ -18,7 +18,9 @@ import com.olegkos.scannerdemo.core.utils.FOUR_TIMES_SPACING
 import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
 import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SIZE
 import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SPACING
+import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.GetStartedButton
 import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.NavigationDotIndicator
+import com.olegkos.scannerdemo.feature_onboarding.util.THIRD_INDEX_PAGE
 import com.olegkos.scannerdemo.ui.theme.ScannerDemoTheme
 
 @Composable
@@ -56,9 +58,13 @@ fun OnBoardingContent(
       subtitleId = subtitleContent
     )
     Spacer(modifier = Modifier.weight(1f))
-    NavigationDotIndicator(
-      currentPage = selectedPage
-    )
+    if (selectedPage == THIRD_INDEX_PAGE) {
+      GetStartedButton()
+    } else {
+      NavigationDotIndicator(
+        currentPage = selectedPage
+      )
+    }
   }
 }
 
