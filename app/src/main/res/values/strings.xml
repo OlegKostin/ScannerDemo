@@ -2,6 +2,11 @@
     <string name="app_name">ScannerDemo</string>
     <string name="onboarding_select_brand_image">Onboarding Image of Selecting a Brand</string>
     <string name="select_a_brand">Select a Brand</string>
-    <string name="onboarding_message_one">Choose the brand you use from our list of existing brands</string>
     <string name="onboarding_insert_serial_number_image">Image of Insert Serial Number</string>
+    <string name="insert_serial_number">Insert Serial Number</string>
+    <string name="onboarding_message_one">Choose the brand you use from our list of existing brands</string>
+    <string name="onboarding_message_two">Insert Serial Number found on your device, or you can scan QR code using our app</string>
+    <string name="onboarding_message_three">After adding the serial number, our app will provide details about your device such as manufactored origin, and date of manufactor</string>
+    <string name="onboarding_view_details_about_device_image">Image of viewing the details of a device</string>
+
 </resources>
