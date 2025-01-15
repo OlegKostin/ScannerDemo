@@ -1,5 +1,6 @@
-package com.olegkos.serialdecoder.core.nav
+package com.olegkos.scannerdemo.core.nav
 
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -11,7 +12,7 @@ import com.olegkos.scannerdemo.feature_onboarding.ui.OnBoardingScreen
 
 
 @Composable
-fun NavigationHost(modifier: Modifier = Modifier) {
+fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass, ) {
   val navController = rememberNavController()
 
   NavHost(
@@ -20,7 +21,7 @@ fun NavigationHost(modifier: Modifier = Modifier) {
     modifier = modifier
   ) {
     composable<Route.OnBoarding> {
-      OnBoardingScreen()
+      OnBoardingScreen(modifier,windowSizeClass =windowSizeClass)
     }
     composable<Route.FAQ> {
       FAQScreen()

@@ -24,8 +24,9 @@ fun OnBoardingImage(
 ) {
   Image(
     modifier = modifier
+      .size(size)
       .padding(NORMAL_SPACING)
-      .size(size),
+    ,
     contentScale = ContentScale.Crop,
     painter = painterResource(id = imageResId),
     contentDescription = stringResource(id = contentDesResId)

@@ -1,4 +1,4 @@
-package com.olegkos.serialdecoder.core.nav
+package com.olegkos.scannerdemo.core.nav
 
 import kotlinx.serialization.Serializable
 
