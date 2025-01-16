@@ -13,8 +13,9 @@ import androidx.compose.ui.Modifier
 
 import com.olegkos.scannerdemo.ui.theme.ScannerDemoTheme
 import com.olegkos.scannerdemo.core.nav.NavigationHost
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
   @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
   override fun onCreate(savedInstanceState: Bundle?) {
