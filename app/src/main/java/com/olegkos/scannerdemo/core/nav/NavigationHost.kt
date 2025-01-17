@@ -12,7 +12,7 @@ import com.olegkos.scannerdemo.feature_onboarding.ui.OnBoardingScreen
 
 
 @Composable
-fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass, ) {
+fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass) {
   val navController = rememberNavController()
 
   NavHost(
@@ -21,7 +21,10 @@ fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass, ) 
     modifier = modifier
   ) {
     composable<Route.OnBoarding> {
-      OnBoardingScreen(modifier,windowSizeClass =windowSizeClass)
+      OnBoardingScreen(modifier, windowSizeClass = windowSizeClass,
+        onHomeNavigation = {
+          navController.navigate(Route.Home)
+        })
     }
     composable<Route.FAQ> {
       FAQScreen()

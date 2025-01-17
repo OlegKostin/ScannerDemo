@@ -1,6 +1,5 @@
 package com.olegkos.scannerdemo.feature_onboarding.ui.components.window_size_layout
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.runtime.Composable
@@ -14,9 +13,10 @@ import com.olegkos.scannerdemo.feature_onboarding.util.THIRD_INDEX_PAGE
 
 @Composable
 fun HorizontalPagerLayout(
-  modifier: Modifier ,
+  modifier: Modifier,
   pagerState: PagerState,
-  scrollType: OnBoardingScrollingType
+  scrollType: OnBoardingScrollingType,
+  onGetStartedButtonClicked: () -> Unit,
 ) {
   HorizontalPager(
     state = pagerState,
@@ -31,6 +31,7 @@ fun HorizontalPagerLayout(
           subtitleContent = R.string.onboarding_message_one,
           selectedPage = FIRST_INDEX_PAGE,
           scrollingType = scrollType,
+          onGetStartedButtonClicked = onGetStartedButtonClicked,
         )
       }
 
@@ -42,6 +43,7 @@ fun HorizontalPagerLayout(
           subtitleContent = R.string.onboarding_message_two,
           selectedPage = SECOND_INDEX_PAGE,
           scrollingType = scrollType,
+          onGetStartedButtonClicked = onGetStartedButtonClicked,
         )
       }
 
@@ -54,6 +56,7 @@ fun HorizontalPagerLayout(
           subtitleContent = R.string.onboarding_message_three,
           selectedPage = THIRD_INDEX_PAGE,
           scrollingType = scrollType,
+          onGetStartedButtonClicked = onGetStartedButtonClicked,
         )
       }
     }

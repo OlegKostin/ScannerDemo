@@ -14,13 +14,16 @@ import com.olegkos.scannerdemo.core.utils.CORNER_SHAPE
 import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
 
 @Composable
-fun GetStartedButton(modifier: Modifier = Modifier) {
+fun GetStartedButton(
+  modifier: Modifier = Modifier,
+  onGetStartedButtonClicked: () -> Unit
+) {
   NormalButton(modifier = modifier
     .clip(RoundedCornerShape(CORNER_SHAPE))
     .fillMaxWidth()
     .padding(NORMAL_SPACING),
     onClick = {
-
+      onGetStartedButtonClicked()
     }
   ) {
     Text(text = stringResource(R.string.get_started))

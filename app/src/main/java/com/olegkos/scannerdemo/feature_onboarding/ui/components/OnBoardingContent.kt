@@ -21,6 +21,7 @@ import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
 import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SIZE
 import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SPACING
 import com.olegkos.scannerdemo.feature_onboarding.ui.OnBoardingScrollingType
+import com.olegkos.scannerdemo.feature_onboarding.ui.OnBoardingViewModel
 import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.GetStartedButton
 import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.NavigationDotIndicator
 import com.olegkos.scannerdemo.feature_onboarding.util.THIRD_INDEX_PAGE
@@ -36,6 +37,7 @@ fun OnBoardingContent(
   @StringRes subtitleContent: Int,
   selectedPage: Int,
   scrollingType: OnBoardingScrollingType,
+  onGetStartedButtonClicked: () -> Unit
 ) {
   when (scrollingType) {
     OnBoardingScrollingType.BOTTOM_NAVIGATION -> {
@@ -65,7 +67,9 @@ fun OnBoardingContent(
         )
         Spacer(modifier = Modifier.weight(1f))
         if (selectedPage == THIRD_INDEX_PAGE) {
-          GetStartedButton()
+          GetStartedButton(onGetStartedButtonClicked = {
+            onGetStartedButtonClicked()
+          })
         } else {
           NavigationDotIndicator(
             currentPage = selectedPage
@@ -85,8 +89,10 @@ fun OnBoardingContent(
           contentDesResId = descContent,
           size = imageSize
         )
-        Column(modifier = modifier.fillMaxWidth(),
-          horizontalAlignment =  Alignment.CenterHorizontally) {
+        Column(
+          modifier = modifier.fillMaxWidth(),
+          horizontalAlignment = Alignment.CenterHorizontally
+        ) {
           OnBoardingHeader(
             modifier = modifier.padding(NORMAL_SPACING),
             headerId = headerContent
@@ -101,21 +107,19 @@ fun OnBoardingContent(
   }
 }
 
-@Preview
-@Composable
-private fun OnBoardingContentPreview() {
-  ScannerDemoTheme {
-    OnBoardingContent(
-      modifier = Modifier.fillMaxSize(),
-      imageResId = R.drawable.onboarding_image_one,
-      headerContent = R.string.select_a_brand,
-      descContent = R.string.onboarding_select_brand_image,
-      subtitleContent = R.string.onboarding_message_one,
-      selectedPage = 1,
-      scrollingType = OnBoardingScrollingType.BOTTOM_NAVIGATION
-    )
-
-  }
-
-
-}
+//@Preview
+//@Composable
+//private fun OnBoardingContentPreview() {
+//  ScannerDemoTheme {
+//    OnBoardingContent(
+//      modifier = Modifier.fillMaxSize(),
+//      imageResId = R.drawable.onboarding_image_one,
+//      headerContent = R.string.select_a_brand,
+//      descContent = R.string.onboarding_select_brand_image,
+//      subtitleContent = R.string.onboarding_message_one,
+//      selectedPage = 1,
+//      scrollingType = OnBoardingScrollingType.BOTTOM_NAVIGATION
+//    )
+//
+//  }
+//}

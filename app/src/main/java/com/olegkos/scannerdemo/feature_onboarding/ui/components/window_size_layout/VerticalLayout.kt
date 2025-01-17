@@ -18,7 +18,9 @@ import com.olegkos.scannerdemo.feature_onboarding.util.SECOND_INDEX_PAGE
 import com.olegkos.scannerdemo.feature_onboarding.util.THIRD_INDEX_PAGE
 
 @Composable
-fun VerticalLayout(modifier: Modifier , scrollType: OnBoardingScrollingType) {
+fun VerticalLayout(modifier: Modifier , scrollType: OnBoardingScrollingType,
+                   onGetStartedButtonClicked: () -> Unit ,
+) {
   Column(
     modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()),
     horizontalAlignment = Alignment.CenterHorizontally,
@@ -32,6 +34,7 @@ fun VerticalLayout(modifier: Modifier , scrollType: OnBoardingScrollingType) {
       subtitleContent = R.string.onboarding_message_one,
       selectedPage = FIRST_INDEX_PAGE,
       scrollingType = scrollType,
+      onGetStartedButtonClicked = onGetStartedButtonClicked
     )
 
     OnBoardingDivider()
@@ -44,7 +47,8 @@ fun VerticalLayout(modifier: Modifier , scrollType: OnBoardingScrollingType) {
       subtitleContent = R.string.onboarding_message_two,
       selectedPage = SECOND_INDEX_PAGE,
       scrollingType = scrollType,
-      )
+      onGetStartedButtonClicked = onGetStartedButtonClicked
+    )
 
     OnBoardingDivider()
 
@@ -56,7 +60,13 @@ fun VerticalLayout(modifier: Modifier , scrollType: OnBoardingScrollingType) {
       subtitleContent = R.string.onboarding_message_three,
       selectedPage = THIRD_INDEX_PAGE,
       scrollingType = scrollType,
+      onGetStartedButtonClicked = onGetStartedButtonClicked
     )
-    GetStartedButton()
+    GetStartedButton(
+      modifier = modifier,
+      onGetStartedButtonClicked = {
+        onGetStartedButtonClicked()
+      },
+    )
   }
 }
