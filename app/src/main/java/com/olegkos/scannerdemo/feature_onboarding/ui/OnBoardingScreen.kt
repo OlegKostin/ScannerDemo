@@ -26,14 +26,12 @@ fun OnBoardingScreen(
 ) {
 
   LaunchedEffect(key1 = true) {
-
     viewModel.uiEvent.collectLatest { event ->
       when (event) {
         OnBoardingEvent.UpdateFirstTime -> {
           onHomeNavigation()
         }
       }
-
     }
   }
   val scrollingType = when (windowSizeClass) {

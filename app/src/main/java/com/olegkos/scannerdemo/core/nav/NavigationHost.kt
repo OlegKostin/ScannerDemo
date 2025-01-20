@@ -23,7 +23,12 @@ fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass) {
     composable<Route.OnBoarding> {
       OnBoardingScreen(modifier, windowSizeClass = windowSizeClass,
         onHomeNavigation = {
-          navController.navigate(Route.Home)
+          navController.navigate(Route.Home) {
+            popUpTo(Route.OnBoarding) {
+              inclusive = true
+            }
+          }
+
         })
     }
     composable<Route.FAQ> {
