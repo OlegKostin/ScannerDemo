@@ -28,7 +28,6 @@ fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass) {
               inclusive = true
             }
           }
-
         })
     }
     composable<Route.FAQ> {

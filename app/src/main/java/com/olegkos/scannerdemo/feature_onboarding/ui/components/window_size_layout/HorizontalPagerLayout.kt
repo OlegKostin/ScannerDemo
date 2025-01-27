@@ -16,6 +16,7 @@ fun HorizontalPagerLayout(
   modifier: Modifier,
   pagerState: PagerState,
   scrollType: OnBoardingScrollingType,
+  canBeClickedGetStartedButton: Boolean,
   onGetStartedButtonClicked: () -> Unit,
 ) {
   HorizontalPager(
@@ -51,9 +52,9 @@ fun HorizontalPagerLayout(
         OnBoardingContent(
           imageResId = R.drawable.onboarding_image_three,
           descContent = R.string.onboarding_insert_serial_number_image,
-
           headerContent = R.string.onboarding_view_details_about_device_image,
           subtitleContent = R.string.onboarding_message_three,
+          canBeClickedGetStartedButton = canBeClickedGetStartedButton,
           selectedPage = THIRD_INDEX_PAGE,
           scrollingType = scrollType,
           onGetStartedButtonClicked = onGetStartedButtonClicked,

@@ -2,7 +2,6 @@ package com.olegkos.scannerdemo.feature_onboarding.ui.components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,20 +11,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.core.utils.DOUBLE_SPACING
 import com.olegkos.scannerdemo.core.utils.FOUR_TIMES_SPACING
 import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
 import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SIZE
 import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SPACING
 import com.olegkos.scannerdemo.feature_onboarding.ui.OnBoardingScrollingType
-import com.olegkos.scannerdemo.feature_onboarding.ui.OnBoardingViewModel
 import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.GetStartedButton
 import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.NavigationDotIndicator
 import com.olegkos.scannerdemo.feature_onboarding.util.THIRD_INDEX_PAGE
-import com.olegkos.scannerdemo.ui.theme.ScannerDemoTheme
 
 @Composable
 fun OnBoardingContent(
@@ -33,6 +28,7 @@ fun OnBoardingContent(
   @DrawableRes imageResId: Int,
   @StringRes descContent: Int,
   @StringRes headerContent: Int,
+  canBeClickedGetStartedButton: Boolean = false,
   imageSize: Dp = ONBOARDING_IMAGE_SIZE,
   @StringRes subtitleContent: Int,
   selectedPage: Int,
@@ -67,9 +63,10 @@ fun OnBoardingContent(
         )
         Spacer(modifier = Modifier.weight(1f))
         if (selectedPage == THIRD_INDEX_PAGE) {
-          GetStartedButton(onGetStartedButtonClicked = {
-            onGetStartedButtonClicked()
-          })
+          GetStartedButton(enabled = canBeClickedGetStartedButton,
+            onGetStartedButtonClicked = {
+              onGetStartedButtonClicked()
+            })
         } else {
           NavigationDotIndicator(
             currentPage = selectedPage
@@ -107,19 +104,3 @@ fun OnBoardingContent(
   }
 }
 
-//@Preview
-//@Composable
-//private fun OnBoardingContentPreview() {
-//  ScannerDemoTheme {
-//    OnBoardingContent(
-//      modifier = Modifier.fillMaxSize(),
-//      imageResId = R.drawable.onboarding_image_one,
-//      headerContent = R.string.select_a_brand,
-//      descContent = R.string.onboarding_select_brand_image,
-//      subtitleContent = R.string.onboarding_message_one,
-//      selectedPage = 1,
-//      scrollingType = OnBoardingScrollingType.BOTTOM_NAVIGATION
-//    )
-//
-//  }
-//}

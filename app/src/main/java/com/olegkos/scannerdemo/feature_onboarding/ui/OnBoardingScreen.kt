@@ -1,11 +1,12 @@
 package com.olegkos.scannerdemo.feature_onboarding.ui
 
-import android.util.Log
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.olegkos.scannerdemo.feature_onboarding.ui.components.window_size_layout.HorizontalPagerLayout
@@ -24,6 +25,9 @@ fun OnBoardingScreen(
   viewModel: OnBoardingViewModel = hiltViewModel(),
   onHomeNavigation: () -> Unit
 ) {
+
+  val uiState: State<OnBoardingState> = viewModel.uiState.collectAsState()
+
 
   LaunchedEffect(key1 = true) {
     viewModel.uiEvent.collectLatest { event ->
@@ -51,17 +55,20 @@ fun OnBoardingScreen(
       OnBoardingScrollingType.BOTTOM_NAVIGATION
     }
   }
+  val canClickGetStarted : Boolean = uiState.value.isLoading == false
   if (scrollingType == OnBoardingScrollingType.BOTTOM_NAVIGATION)
     HorizontalPagerLayout(
       modifier = modifier,
       pagerState = pagerState,
       scrollType = scrollingType,
+      canBeClickedGetStartedButton =canClickGetStarted,
       onGetStartedButtonClicked = {viewModel.updateFirstTime()},
     )
   else
     VerticalLayout(
       modifier = modifier,
       scrollType = scrollingType,
+      canBeClickedGetStarted = canClickGetStarted,
       onGetStartedButtonClicked = { viewModel.updateFirstTime() },
     )
 

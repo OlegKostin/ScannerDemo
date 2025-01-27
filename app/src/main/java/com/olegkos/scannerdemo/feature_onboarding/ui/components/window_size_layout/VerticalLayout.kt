@@ -18,11 +18,15 @@ import com.olegkos.scannerdemo.feature_onboarding.util.SECOND_INDEX_PAGE
 import com.olegkos.scannerdemo.feature_onboarding.util.THIRD_INDEX_PAGE
 
 @Composable
-fun VerticalLayout(modifier: Modifier , scrollType: OnBoardingScrollingType,
-                   onGetStartedButtonClicked: () -> Unit ,
+fun VerticalLayout(
+  modifier: Modifier, scrollType: OnBoardingScrollingType,
+  canBeClickedGetStarted: Boolean,
+  onGetStartedButtonClicked: () -> Unit,
 ) {
   Column(
-    modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+    modifier = modifier
+      .fillMaxSize()
+      .verticalScroll(rememberScrollState()),
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.SpaceEvenly
   ) {
@@ -64,6 +68,7 @@ fun VerticalLayout(modifier: Modifier , scrollType: OnBoardingScrollingType,
     )
     GetStartedButton(
       modifier = modifier,
+      enabled = canBeClickedGetStarted,
       onGetStartedButtonClicked = {
         onGetStartedButtonClicked()
       },

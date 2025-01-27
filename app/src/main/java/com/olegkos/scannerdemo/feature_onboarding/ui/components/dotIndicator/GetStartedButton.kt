@@ -16,12 +16,14 @@ import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
 @Composable
 fun GetStartedButton(
   modifier: Modifier = Modifier,
+  enabled: Boolean,
   onGetStartedButtonClicked: () -> Unit
 ) {
   NormalButton(modifier = modifier
     .clip(RoundedCornerShape(CORNER_SHAPE))
     .fillMaxWidth()
     .padding(NORMAL_SPACING),
+    enabled = enabled,
     onClick = {
       onGetStartedButtonClicked()
     }
