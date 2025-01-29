@@ -5,12 +5,10 @@ import javax.inject.Inject
 
 class SharedPreferenceManager
   @Inject constructor(private val sharedPreferences: SharedPreferences) : SharedPreferenceManagement {
-  override val editor: SharedPreferences.Editor
-    get() = sharedPreferences.edit()
+
 
   override fun updateFirstTime(isFirstTime: Boolean) {
-    editor.putBoolean(KEY_IS_FIRST_TIME, isFirstTime)
-    editor.apply()
+    sharedPreferences.edit().putBoolean(KEY_IS_FIRST_TIME, isFirstTime).apply()
   }
 
   override fun getIsFirstTime(): Boolean {

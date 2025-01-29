@@ -29,12 +29,15 @@ class OnBoardingViewModel @Inject constructor(
   val uiState: StateFlow<OnBoardingState> = _uiState.asStateFlow()
 
   private fun setLoading(isLoading: Boolean) {
-_uiState.value = _uiState.value.copy(isLoading = isLoading)
+    _uiState.value = _uiState.value.copy(isLoading = isLoading)
   }
 
-  fun updateFirstTime() = viewModelScope.launch {
+  fun updateFirstTime() {
     setLoading(true)
-    _uiEvent.emit(OnBoardingEvent.UpdateFirstTime)
-    setLoading(false)
+    sharedPreferenceManagement.updateFirstTime(false)
+    viewModelScope.launch {
+      _uiEvent.emit(OnBoardingEvent.UpdateFirstTime)
+      setLoading(false)
+    }
   }
 }
