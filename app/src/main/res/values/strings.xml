@@ -9,5 +9,12 @@
     <string name="onboarding_message_three">After adding the serial number, our app will provide details about your device such as manufactored origin, and date of manufactor</string>
     <string name="onboarding_view_details_about_device_image">Image of viewing the details of a device</string>
     <string name="get_started">Get Started</string>
-
+    <string name="frequently_asked_questions">Frequently Asked Questions</string>
+    <string name="faq_1">How does the serial get decoded?</string>
+    <string name="ans_1">For every brand, there\'s a serial, and that serial represent certain words that are encoded into that serial, and each character, or number represent a meaning, we take all that and decode every character, or sequence of characters to provide its meaningful pre-encoded message, such as its manufactor type, or date of manufactor, and the type of serial inserted, all that within a scan of the serial QR code</string>
+    <string name="faq_2">What Brands are available on the app?</string>
+    <string name="ans_2">We\'ve got Samsung TVs and LG TVs so far, and we are planning to add more brands, and manufactures soon</string>
+    <string name="faq_3">Do you have any other web applications?</string>
+    <string name="ans_3">Yes, you can visit Google\'s Play Store to check some of our apps.</string>
+    <string name="back_button">Back Button</string>
 </resources>
