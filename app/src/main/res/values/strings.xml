@@ -17,4 +17,7 @@
     <string name="faq_3">Do you have any other web applications?</string>
     <string name="ans_3">Yes, you can visit Google\'s Play Store to check some of our apps.</string>
     <string name="back_button">Back Button</string>
+    <string name="rate_the_app">Rate The App!</string>
+    <string name="contact_the_developer">Contact The Developer</string>
+    <string name="drop_down_icon">Drop down</string>
 </resources>

@@ -16,6 +16,8 @@ val DIVIDER_HEIGHT = 2.dp
 
 val DOT_SIZE = 16.dp
 
+val BACK_BUTTON_SIZE = 48.dp
+
 val ONBOARDING_IMAGE_SIZE = 200.dp
 
 
