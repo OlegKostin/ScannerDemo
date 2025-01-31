@@ -11,9 +11,9 @@ import com.olegkos.scannerdemo.feature_faq.ui.components.FAQContent
 import com.olegkos.scannerdemo.feature_faq.ui.components.TopFAQBar
 
 @Composable
-fun FAQScreen(modifier: Modifier = Modifier) {
+fun FAQScreen(modifier: Modifier = Modifier,onBackButtonPressed: () -> Unit) {
   Scaffold(
-    topBar = { TopFAQBar() },
+    topBar = { TopFAQBar(onBackButtonPressed = onBackButtonPressed) },
     bottomBar = { BottomButtons() }
   ) { paddingValue ->
     Column(

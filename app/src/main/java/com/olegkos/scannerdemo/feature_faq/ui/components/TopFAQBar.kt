@@ -17,7 +17,7 @@ import com.olegkos.scannerdemo.core.utils.BACK_BUTTON_SIZE
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopFAQBar(modifier: Modifier = Modifier) {
+fun TopFAQBar(modifier: Modifier = Modifier,onBackButtonPressed: () -> Unit) {
   TopAppBar(
     modifier = modifier,
     title = { FAQTitle() },
@@ -25,7 +25,7 @@ fun TopFAQBar(modifier: Modifier = Modifier) {
       containerColor = MaterialTheme.colorScheme.secondary, // Задаем цвет фона
       // titleContentColor = MaterialTheme.colorScheme.primary // Цвет текста
     ),
-    navigationIcon = { BackButtonIcon() },
+    navigationIcon = { BackButtonIcon(onBackButtonPressed = onBackButtonPressed) },
   )
 }
 
@@ -39,8 +39,8 @@ fun FAQTitle(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BackButtonIcon(modifier: Modifier = Modifier) {
-  IconButton(modifier = modifier, onClick = { TODO() }) {
+fun BackButtonIcon(modifier: Modifier = Modifier, onBackButtonPressed: () -> Unit) {
+  IconButton(modifier = modifier, onClick = onBackButtonPressed) {
     Icon(
       modifier = modifier.size(BACK_BUTTON_SIZE),
       painter = painterResource(id = R.drawable.ic_back),
