@@ -17,20 +17,20 @@ import com.olegkos.scannerdemo.core.utils.BACK_BUTTON_SIZE
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopFAQBar(modifier: Modifier = Modifier,onBackButtonPressed: () -> Unit) {
+fun TopFAQBar(modifier: Modifier, onBackButtonPressed: () -> Unit) {
   TopAppBar(
     modifier = modifier,
-    title = { FAQTitle() },
+    title = { FAQTitle(modifier = modifier) },
     colors = TopAppBarDefaults.topAppBarColors(
       containerColor = MaterialTheme.colorScheme.secondary, // Задаем цвет фона
       // titleContentColor = MaterialTheme.colorScheme.primary // Цвет текста
     ),
-    navigationIcon = { BackButtonIcon(onBackButtonPressed = onBackButtonPressed) },
+    navigationIcon = { BackButtonIcon(modifier = modifier, onBackButtonPressed = onBackButtonPressed) },
   )
 }
 
 @Composable
-fun FAQTitle(modifier: Modifier = Modifier) {
+fun FAQTitle(modifier: Modifier) {
   Text(
     modifier = modifier,
     style = MaterialTheme.typography.displayMedium,
@@ -39,7 +39,7 @@ fun FAQTitle(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BackButtonIcon(modifier: Modifier = Modifier, onBackButtonPressed: () -> Unit) {
+fun BackButtonIcon(modifier: Modifier, onBackButtonPressed: () -> Unit) {
   IconButton(modifier = modifier, onClick = onBackButtonPressed) {
     Icon(
       modifier = modifier.size(BACK_BUTTON_SIZE),

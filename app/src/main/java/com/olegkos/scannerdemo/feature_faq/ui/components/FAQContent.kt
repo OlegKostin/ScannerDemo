@@ -24,29 +24,33 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.core.utils.FOUR_TIMES_SPACING
 import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
 
 @Composable
-fun FAQContent(modifier: Modifier = Modifier) {
+fun FAQContent(modifier: Modifier) {
   LazyColumn(
     modifier = modifier, contentPadding = PaddingValues(NORMAL_SPACING)
   ) {
     item {
       Question(
+        modifier = modifier,
         question = stringResource(R.string.faq_1),
         answer = stringResource(R.string.ans_1)
       )
     }
     item {
       Question(
+        modifier = modifier,
         question = stringResource(R.string.faq_2),
         answer = stringResource(R.string.ans_2)
       )
     }
     item {
       Question(
+        modifier = modifier,
         question = stringResource(R.string.faq_3),
         answer = stringResource(R.string.ans_3)
       )
@@ -55,7 +59,7 @@ fun FAQContent(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun Question(modifier: Modifier = Modifier, question: String, answer: String) {
+fun Question(modifier: Modifier , question: String, answer: String) {
 
   val isExpanded = remember {
     mutableStateOf(false)
@@ -71,7 +75,7 @@ fun Question(modifier: Modifier = Modifier, question: String, answer: String) {
         .background(MaterialTheme.colorScheme.secondary)
         .clickable { isExpanded.value = !isExpanded.value },
       verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.SpaceAround
+      horizontalArrangement = Arrangement.SpaceBetween
     ) {
       val painterIcon = if (!isExpanded.value)
         painterResource(R.drawable.ic_dropdown)
@@ -82,7 +86,7 @@ fun Question(modifier: Modifier = Modifier, question: String, answer: String) {
         contentDescription = stringResource(R.string.drop_down_icon),
         tint = MaterialTheme.colorScheme.primary
       )
-      Text(text = question, style = MaterialTheme.typography.bodyLarge)
+      Text(modifier = modifier.weight(1f) ,textAlign = TextAlign.Center, text = question, style = MaterialTheme.typography.bodyLarge)
     }
     AnimatedVisibility(
       visible = isExpanded.value,

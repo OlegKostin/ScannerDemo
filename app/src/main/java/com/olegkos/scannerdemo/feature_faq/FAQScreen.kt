@@ -13,15 +13,15 @@ import com.olegkos.scannerdemo.feature_faq.ui.components.TopFAQBar
 @Composable
 fun FAQScreen(modifier: Modifier = Modifier,onBackButtonPressed: () -> Unit) {
   Scaffold(
-    topBar = { TopFAQBar(onBackButtonPressed = onBackButtonPressed) },
-    bottomBar = { BottomButtons() }
+    topBar = { TopFAQBar(modifier = modifier,onBackButtonPressed = onBackButtonPressed) },
+    bottomBar = { BottomButtons(modifier = modifier) }
   ) { paddingValue ->
     Column(
       modifier = modifier
         .fillMaxSize()
         .padding(paddingValue)
     ) {
-      FAQContent()
+      FAQContent(modifier = modifier)
     }
   }
 }
