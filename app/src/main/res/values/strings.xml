@@ -20,4 +20,7 @@
     <string name="rate_the_app">Rate The App!</string>
     <string name="contact_the_developer">Contact The Developer</string>
     <string name="drop_down_icon">Drop down</string>
+    <string name="app_icon">app icon</string>
+    <string name="faq_btn_home_app">Info</string>
+    <string name="change_manufactor">Change manufactor</string>
 </resources>

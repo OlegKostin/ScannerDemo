@@ -19,7 +19,7 @@ fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass,
                    ) {
   val navController = rememberNavController()
   val startDestination = if (viewModel.firstTimeOrNot) Route.OnBoarding
-  else Route.FAQ
+  else Route.Home
 
   NavHost(
     navController = navController,
