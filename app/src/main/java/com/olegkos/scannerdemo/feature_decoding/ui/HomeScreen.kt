@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.olegkos.scannerdemo.feature_decoding.ui.components.HomeAppBar
 import com.olegkos.scannerdemo.feature_decoding.ui.components.HomeBottomSheet
+import com.olegkos.scannerdemo.feature_decoding.ui.components.HomeContent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -19,7 +20,12 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     scaffoldState = sheetState,
     sheetContent = { HomeBottomSheet() }
   ) {
-
+    HomeContent(
+      modifier = modifier,
+      value = "",
+      label = "Serial Number",
+      onValueChange = {} /*TODO*/
+    )
 
   }
 

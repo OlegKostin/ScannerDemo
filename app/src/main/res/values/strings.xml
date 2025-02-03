@@ -23,4 +23,8 @@
     <string name="app_icon">app icon</string>
     <string name="faq_btn_home_app">Info</string>
     <string name="change_manufactor">Change manufactor</string>
+    <string name="manufactored_type_image">Image of Manufactored Type</string>
+    <string name="manufactored_date_image">Image of Manufactored Date</string>
+    <string name="manufactored_location_image">Image of Manufactored Location</string>
+    <string name="bottom_sheet_puller">Pull upward to drag Bottom Sheet</string>
 </resources>
