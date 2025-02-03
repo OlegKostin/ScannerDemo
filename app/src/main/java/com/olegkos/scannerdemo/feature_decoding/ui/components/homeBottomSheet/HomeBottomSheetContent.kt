@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 @Composable
 fun HomeBottomSheetContent(modifier: Modifier = Modifier) {
 
-  Column {
+  Column (modifier = modifier) {
     SerialScanText()
     CameraBox()
   }
