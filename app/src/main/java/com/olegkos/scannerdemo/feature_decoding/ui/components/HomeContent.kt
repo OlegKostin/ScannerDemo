@@ -2,30 +2,38 @@ package com.olegkos.scannerdemo.feature_decoding.ui.components
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import com.olegkos.scannerdemo.R
+import com.olegkos.scannerdemo.core.utils.DOUBLE_SPACING
 
 @Composable
 fun HomeContent(
   modifier: Modifier = Modifier,
   value: String,
-  label: String,
   onValueChange: (string: String) -> Unit
 ) {
 
   Column(
-    modifier = modifier,
-    verticalArrangement = Arrangement.SpaceAround
+    modifier = modifier.fillMaxSize(),
+    verticalArrangement = Arrangement.SpaceEvenly,
+    horizontalAlignment = Alignment.CenterHorizontally
   ) {
     ManufactureItem(
       modifier = modifier,
@@ -49,7 +57,6 @@ fun HomeContent(
     SerialTextField(
       modifier = modifier,
       value = value,
-      label = label,
       onValueChange = onValueChange
     )
   }
@@ -63,28 +70,28 @@ fun ManufactureItem(
   title: String
 ) {
   Row(
-    modifier = modifier,
+    modifier = modifier.fillMaxWidth(),
     horizontalArrangement = Arrangement.SpaceEvenly
   ) {
-    ManufactureIcon(
-      modifier = modifier,
+    ManufactureImage(
+      modifier = modifier.weight(0.4f),
       drawableResId = drawableResId,
       contentDescriptionStringResId = stringResId,
     )
     ManufactureTitle(
-      modifier = modifier,
+      modifier = modifier.weight(0.6f),
       title = title
     )
   }
 }
 
 @Composable
-fun ManufactureIcon(
+fun ManufactureImage(
   modifier: Modifier = Modifier,
   @DrawableRes drawableResId: Int,
   @StringRes contentDescriptionStringResId: Int
 ) {
-  Icon(
+  Image(
     modifier = modifier,
     painter = painterResource(id = drawableResId),
     contentDescription = stringResource(id = contentDescriptionStringResId)
@@ -96,18 +103,21 @@ fun ManufactureTitle(
   modifier: Modifier = Modifier,
   title: String
 ) {
-  Text(modifier = modifier, text = title, style = MaterialTheme.typography.bodyMedium)
+  Text(
+    modifier = modifier, text = title, style = MaterialTheme.typography.displayMedium,
+    textAlign = TextAlign.Center
+  )
 }
 
 @Composable
 fun SerialTextField(
   modifier: Modifier = Modifier,
   value: String,
-  label: String,
   onValueChange: (string: String) -> Unit
 ) {
-  TextField(
-    value = value, label = { Text(text = label) }, onValueChange = onValueChange,
+  OutlinedTextField(
+    modifier = modifier.padding(DOUBLE_SPACING).fillMaxWidth(),
+    value = value, label = { Text(text = stringResource(R.string.insert_serial_number)) }, onValueChange = onValueChange,
   )
 
 }

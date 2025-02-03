@@ -27,4 +27,5 @@
     <string name="manufactored_date_image">Image of Manufactored Date</string>
     <string name="manufactored_location_image">Image of Manufactored Location</string>
     <string name="bottom_sheet_puller">Pull upward to drag Bottom Sheet</string>
+    <string name="scan_serial_with_qr">Scan Serial With QR</string>
 </resources>
