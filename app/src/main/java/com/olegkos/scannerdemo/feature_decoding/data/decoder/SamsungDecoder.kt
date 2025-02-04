@@ -1,13 +1,10 @@
-package com.olegkos.scannerdemo.feature_decoding.data.util
+package com.olegkos.scannerdemo.feature_decoding.data.decoder
 
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
+import com.olegkos.scannerdemo.feature_decoding.data.util.ProductData
 
 const val TV_TYPE = '3'
-private const val UNSPECIFIED_TYPE = "UNSPECIFIED_TYPE"
-private const val UNSPECIFIED_COUNTRY = "UNSPECIFIED_COUNTRY"
-private const val UNSPECIFIED_YEAR = "UNSPECIFIED_YEAR"
-private const val UNSPECIFIED_MONTH = "UNSPECIFIED_MONTH"
 
 class SamsungDecoder() : DecoderStrategy, ProductData<Char, Int, Char, String> {
 
@@ -75,18 +72,14 @@ class SamsungDecoder() : DecoderStrategy, ProductData<Char, Int, Char, String> {
   }
 
   override fun fillMonth() {
-    monthMap['1'] = "01"
-    monthMap['2'] = "02"
-    monthMap['3'] = "03"
-    monthMap['4'] = "04"
-    monthMap['5'] = "05"
-    monthMap['6'] = "06"
-    monthMap['7'] = "07"
-    monthMap['8'] = "08"
-    monthMap['9'] = "09"
-    monthMap['A'] = "10"
-    monthMap['B'] = "11"
-    monthMap['C'] = "12"
+    monthMap.putAll(
+      mapOf(
+        '1' to "01", '2' to "02", '3' to "03",
+        '4' to "04", '5' to "05", '6' to "06",
+        '7' to "07", '8' to "08", '9' to "09",
+        'A' to "10", 'B' to "11", 'C' to "12"
+      )
+    )
   }
 
 

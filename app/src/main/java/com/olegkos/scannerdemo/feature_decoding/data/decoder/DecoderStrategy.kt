@@ -1,4 +1,4 @@
-package com.olegkos.scannerdemo.feature_decoding.data.util
+package com.olegkos.scannerdemo.feature_decoding.data.decoder
 
 import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
 
