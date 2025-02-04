@@ -42,7 +42,9 @@ fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass,
       )
     }
     composable<Route.Home> {
-      HomeScreen()
+      HomeScreen(
+        onFAQButtonClicked = { navController.navigate(Route.FAQ) }
+      )
     }
   }
 

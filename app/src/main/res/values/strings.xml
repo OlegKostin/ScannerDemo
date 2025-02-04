@@ -28,4 +28,14 @@
     <string name="manufactored_location_image">Image of Manufactored Location</string>
     <string name="bottom_sheet_puller">Pull upward to drag Bottom Sheet</string>
     <string name="scan_serial_with_qr">Scan Serial With QR</string>
+    <string name="tv">TV</string>
+    <string name="korea">Korea</string>
+    <string name="russia">Russia</string>
+    <string name="romania">Romania</string>
+    <string name="india">India</string>
+    <string name="hungary">Hungary</string>
+    <string name="mexico">Mexico</string>
+    <string name="china">China</string>
+    <string name="slovenia">Slovenia</string>
+    <string name="malaysia">Malaysia</string>
 </resources>

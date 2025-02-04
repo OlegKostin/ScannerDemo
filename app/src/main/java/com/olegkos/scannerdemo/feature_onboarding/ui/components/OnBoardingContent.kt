@@ -12,11 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
-import com.olegkos.scannerdemo.core.utils.DOUBLE_SPACING
-import com.olegkos.scannerdemo.core.utils.FOUR_TIMES_SPACING
-import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
-import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SIZE
-import com.olegkos.scannerdemo.core.utils.ONBOARDING_IMAGE_SPACING
+import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
+import com.olegkos.scannerdemo.core.util.FOUR_TIMES_SPACING
+import com.olegkos.scannerdemo.core.util.NORMAL_SPACING
+import com.olegkos.scannerdemo.core.util.ONBOARDING_IMAGE_SIZE
+import com.olegkos.scannerdemo.core.util.ONBOARDING_IMAGE_SPACING
 import com.olegkos.scannerdemo.feature_onboarding.ui.OnBoardingScrollingType
 import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.GetStartedButton
 import com.olegkos.scannerdemo.feature_onboarding.ui.components.dotIndicator.NavigationDotIndicator

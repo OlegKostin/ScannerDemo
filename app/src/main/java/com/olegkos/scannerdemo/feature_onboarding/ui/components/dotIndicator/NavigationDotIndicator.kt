@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.olegkos.scannerdemo.core.utils.FOUR_TIMES_SPACING
-import com.olegkos.scannerdemo.core.utils.TRIPLE_SPACING
+import com.olegkos.scannerdemo.core.util.FOUR_TIMES_SPACING
+import com.olegkos.scannerdemo.core.util.TRIPLE_SPACING
 import com.olegkos.scannerdemo.feature_onboarding.util.FIRST_INDEX_PAGE
 import com.olegkos.scannerdemo.feature_onboarding.util.SECOND_INDEX_PAGE
 import com.olegkos.scannerdemo.feature_onboarding.util.THIRD_INDEX_PAGE

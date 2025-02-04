@@ -10,9 +10,9 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.core.ui.components.NormalButton
-import com.olegkos.scannerdemo.core.utils.DOUBLE_SPACING
-import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
-import com.olegkos.scannerdemo.core.utils.YOUTUBE
+import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
+import com.olegkos.scannerdemo.core.util.NORMAL_SPACING
+import com.olegkos.scannerdemo.core.util.YOUTUBE
 
 @Composable
 fun BottomButtons(modifier: Modifier = Modifier) {

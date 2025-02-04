@@ -15,19 +15,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.olegkos.scannerdemo.R
-import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
+import com.olegkos.scannerdemo.core.util.NORMAL_SPACING
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeAppBar(modifier: Modifier = Modifier) {
+fun HomeAppBar(modifier: Modifier = Modifier, onBrandButtonClicked: () -> Unit,
+               onFAQButtonClicked: () -> Unit) {
   TopAppBar(modifier = modifier,
     navigationIcon = { AppBarIcon() },
     title = { AppBarTitle(title = "Samsung"/*TODO*/) },
     actions = {
       AddMenuActions(
         modifier = modifier,
-        onBrandClick =  {},
-        onFAQClick = {}
+        onBrandClick =  onBrandButtonClicked,
+        onFAQClick = onFAQButtonClicked
       )}
     )
 }

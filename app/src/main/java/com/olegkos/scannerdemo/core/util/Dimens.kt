@@ -1,4 +1,4 @@
-package com.olegkos.scannerdemo.core.utils
+package com.olegkos.scannerdemo.core.util
 
 import androidx.compose.ui.unit.dp
 

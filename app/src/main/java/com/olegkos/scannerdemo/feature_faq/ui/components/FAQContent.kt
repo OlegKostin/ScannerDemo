@@ -26,8 +26,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.olegkos.scannerdemo.R
-import com.olegkos.scannerdemo.core.utils.FOUR_TIMES_SPACING
-import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
+import com.olegkos.scannerdemo.core.util.FOUR_TIMES_SPACING
+import com.olegkos.scannerdemo.core.util.NORMAL_SPACING
 
 @Composable
 fun FAQContent(modifier: Modifier) {

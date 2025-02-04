@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.olegkos.scannerdemo.R
-import com.olegkos.scannerdemo.core.utils.BACK_BUTTON_SIZE
+import com.olegkos.scannerdemo.core.util.BACK_BUTTON_SIZE
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -10,8 +10,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.core.ui.components.NormalButton
-import com.olegkos.scannerdemo.core.utils.CORNER_SHAPE
-import com.olegkos.scannerdemo.core.utils.NORMAL_SPACING
+import com.olegkos.scannerdemo.core.util.CORNER_SHAPE
+import com.olegkos.scannerdemo.core.util.NORMAL_SPACING
 
 @Composable
 fun GetStartedButton(

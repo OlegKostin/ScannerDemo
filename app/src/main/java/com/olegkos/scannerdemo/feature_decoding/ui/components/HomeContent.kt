@@ -12,16 +12,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.olegkos.scannerdemo.R
-import com.olegkos.scannerdemo.core.utils.DOUBLE_SPACING
+import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
 
 @Composable
 fun HomeContent(

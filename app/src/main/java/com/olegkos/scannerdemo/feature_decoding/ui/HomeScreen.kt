@@ -16,9 +16,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.olegkos.scannerdemo.core.utils.CORNER_SHAPE
-import com.olegkos.scannerdemo.core.utils.DOUBLE_SPACING
-import com.olegkos.scannerdemo.core.utils.TONAL_ELEVATION
+import com.olegkos.scannerdemo.core.util.CORNER_SHAPE
+import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
+import com.olegkos.scannerdemo.core.util.TONAL_ELEVATION
 import com.olegkos.scannerdemo.feature_decoding.ui.components.HomeAppBar
 import com.olegkos.scannerdemo.feature_decoding.ui.components.HomeContent
 import com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.BottomHomeDragHandler
@@ -27,11 +27,14 @@ import com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.QR
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(modifier: Modifier = Modifier, onFAQButtonClicked: () -> Unit) {
   var showBottomSheet by remember { mutableStateOf(false) }
   Scaffold(
     topBar = {
-      HomeAppBar()
+      HomeAppBar(
+        onBrandButtonClicked = { showDialog() },
+        onFAQButtonClicked = onFAQButtonClicked
+      )
     },
     floatingActionButton = {
       FloatingActionButton(
@@ -73,3 +76,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
   }
 }
 
+private fun showDialog() {
+
+}

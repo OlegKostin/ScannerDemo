@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import com.olegkos.scannerdemo.core.utils.DOT_SIZE
+import com.olegkos.scannerdemo.core.util.DOT_SIZE
 
 @Composable
 fun Dot(modifier: Modifier = Modifier, selected: Boolean) {
