@@ -1,5 +1,6 @@
 package com.olegkos.scannerdemo.feature_decoding.data.util
 
+import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
 
 const val TV_TYPE = '3'
@@ -8,7 +9,11 @@ private const val UNSPECIFIED_COUNTRY = "UNSPECIFIED_COUNTRY"
 private const val UNSPECIFIED_YEAR = "UNSPECIFIED_YEAR"
 private const val UNSPECIFIED_MONTH = "UNSPECIFIED_MONTH"
 
-class SamsungDecoder() : DecoderStrategy, ProductData<Char, String> {
+class SamsungDecoder() : DecoderStrategy, ProductData<Char, Int, Char, String> {
+
+  override val countryMap: HashMap<Char, Int> = hashMapOf()
+  override val monthMap: HashMap<Char, String> = hashMapOf()
+  override val yearMap: HashMap<Char, String> = hashMapOf()
 
   init {
     fillCountry()
@@ -30,10 +35,6 @@ class SamsungDecoder() : DecoderStrategy, ProductData<Char, String> {
       date = date
     )
   }
-
-  override val countryMap: HashMap<Char, String> = hashMapOf()
-  override val monthMap: HashMap<Char, String> = hashMapOf()
-  override val yearMap: HashMap<Char, String> = hashMapOf()
 
   override fun fillYear() {
     yearMap['Y'] = "2005"
@@ -60,18 +61,17 @@ class SamsungDecoder() : DecoderStrategy, ProductData<Char, String> {
   }
 
   override fun fillCountry() {
-    countryMap['1'] = "korea"
-//    countryMap['1'] = R.string.korea
-//    countryMap['3'] = R.string.korea
-//    countryMap['4'] = R.string.romania
-//    countryMap['8'] = R.string.india
-//    countryMap['C'] = R.string.mexico
-//    countryMap['H'] = R.string.hungary
-//    countryMap['L'] = R.string.russia
-//    countryMap['M'] = R.string.malaysia
-//    countryMap['N'] = R.string.india
-//    countryMap['S'] = R.string.slovenia
-//    countryMap['W'] = R.string.china
+    countryMap['1'] = R.string.korea
+    countryMap['3'] = R.string.korea
+    countryMap['4'] = R.string.romania
+    countryMap['8'] = R.string.india
+    countryMap['C'] = R.string.mexico
+    countryMap['H'] = R.string.hungary
+    countryMap['L'] = R.string.russia
+    countryMap['M'] = R.string.malaysia
+    countryMap['N'] = R.string.india
+    countryMap['S'] = R.string.slovenia
+    countryMap['W'] = R.string.china
   }
 
   override fun fillMonth() {
@@ -101,22 +101,17 @@ class SamsungDecoder() : DecoderStrategy, ProductData<Char, String> {
 
   override fun getCountryFromSerial(serial: String): String {
     val countryChar = serial[5]
-    if (countryMap.containsKey(countryChar)) {
-      return "made in ${countryMap[countryChar]!!}"
-    }
-    return UNSPECIFIED_COUNTRY
+    return "made in ${countryMap.getOrDefault(countryChar, UNSPECIFIED_COUNTRY)}"
   }
+
 
   override fun getDateFromSerial(serial: String): String {
     val yearChar = serial[7]
-    val monthChar = serial[8]
+    val monthString = serial[8]
 
-    var yearValue = UNSPECIFIED_YEAR
-    var monthValue = UNSPECIFIED_MONTH
-    if (yearMap.containsKey(yearChar))
-      yearValue = yearMap[yearChar]!!
-    if (monthMap.containsKey(monthChar))
-      monthValue = monthMap[monthChar]!!
+    val yearValue = yearMap.getOrDefault(yearChar, UNSPECIFIED_YEAR)
+    val monthValue = monthMap.getOrDefault(monthString, UNSPECIFIED_MONTH)
+
     return "made at $monthValue / $yearValue"
   }
 
