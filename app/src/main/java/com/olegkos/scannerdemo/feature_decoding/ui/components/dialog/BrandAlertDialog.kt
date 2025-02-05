@@ -20,7 +20,7 @@ import com.olegkos.scannerdemo.feature_decoding.data.entity.Brands
 @Composable
 fun BrandAlertDialog(
   modifier: Modifier = Modifier, brands: Array<Brands>,
-  onBrandClicked: () -> Unit,
+  onBrandClicked: (brand: String) -> Unit,
   onDismissRequest: () -> Unit
 ) {
   BasicAlertDialog(
@@ -39,7 +39,7 @@ fun BrandAlertDialog(
           Brand(
             brandName = brands[it].name,
             onBrandClicked = {
-              onBrandClicked()
+              onBrandClicked(brands[it].name)
               onDismissRequest()
             }
           )
