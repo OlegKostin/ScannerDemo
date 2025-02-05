@@ -1,7 +1,11 @@
-package com.olegkos.scannerdemo.feature_onboarding.di
+package com.olegkos.scannerdemo.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
+import com.olegkos.scannerdemo.feature_decoding.data.local.datastore.DataStoreManager
 import com.olegkos.scannerdemo.feature_onboarding.data.local.SharedPreferenceManagement
 import com.olegkos.scannerdemo.feature_onboarding.data.local.SharedPreferenceManager
 import dagger.Module
@@ -14,6 +18,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object LocalAppModule {
+  private const val SERIAL_DECODER_DATA_STORE_NAME = "serialDecoderDataStore"
+
+  private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = SERIAL_DECODER_DATA_STORE_NAME)
 
   @Provides
   @Singleton
@@ -29,4 +36,17 @@ object LocalAppModule {
   fun provideSharedPreferenceManagement(sharedPreferences: SharedPreferences): SharedPreferenceManagement {
     return SharedPreferenceManager(sharedPreferences)
   }
+
+  @Provides
+  @Singleton
+  fun provideDataStorePreference(@ApplicationContext context: Context): DataStore<Preferences> {
+    return context.dataStore
+  }
+
+  @Provides
+  @Singleton
+  fun provideDataStoreManager(dataStore: DataStore<Preferences>): DataStoreManager {
+    return DataStoreManager(dataStore)
+  }
+
 }

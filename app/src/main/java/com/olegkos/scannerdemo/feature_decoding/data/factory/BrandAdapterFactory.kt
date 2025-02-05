@@ -1,8 +1,8 @@
 package com.olegkos.scannerdemo.feature_decoding.data.factory
 
-import com.olegkos.scannerdemo.feature_decoding.data.decoder.DecoderStrategy
-import com.olegkos.scannerdemo.feature_decoding.data.decoder.LGDecoder
-import com.olegkos.scannerdemo.feature_decoding.data.decoder.SamsungDecoder
+import com.olegkos.scannerdemo.feature_decoding.data.local.decoder.DecoderStrategy
+import com.olegkos.scannerdemo.feature_decoding.data.local.decoder.LGDecoder
+import com.olegkos.scannerdemo.feature_decoding.data.local.decoder.SamsungDecoder
 import com.olegkos.scannerdemo.feature_decoding.data.entity.Brands
 
 
