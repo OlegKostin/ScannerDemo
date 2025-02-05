@@ -42,4 +42,5 @@
     <string name="malaysia">Malaysia</string>
     <string name="type_with_value">%s</string>
     <string name="made_in">Made in %s</string>
+    <string name="dismiss">Dismiss</string>
 </resources>

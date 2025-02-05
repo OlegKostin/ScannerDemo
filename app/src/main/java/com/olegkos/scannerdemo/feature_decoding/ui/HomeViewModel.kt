@@ -9,8 +9,11 @@ import com.olegkos.scannerdemo.feature_decoding.data.local.datastore.DataStoreMa
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.onEach
@@ -28,7 +31,7 @@ class HomeViewModel
   private val decoderFactory: DecoderFactory
 ) : ViewModel() {
 
-  private val brands: Array<Brands> = Brands.entries.toTypedArray()
+   val brands: Array<Brands> = Brands.entries.toTypedArray()
   private val _uiState: MutableStateFlow<HomeUiState> =
     MutableStateFlow(
       HomeUiState(
@@ -42,8 +45,11 @@ class HomeViewModel
     )
   var uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
-  val serialFlow: Flow<String> = dataStoreManager.getSerial()
-  val brandFlow: Flow<String> = dataStoreManager.getBrand()
+  private val _uiEvent: MutableSharedFlow<HomeUiEvent> = MutableSharedFlow()
+  val uiEvent: SharedFlow<HomeUiEvent> = _uiEvent.asSharedFlow()
+
+  private val serialFlow: Flow<String> = dataStoreManager.getSerial()
+  private val brandFlow: Flow<String> = dataStoreManager.getBrand()
   val serialBrandFlow = serialFlow.combine(brandFlow) { serial, brand ->
     listOf(serial, brand)
   }.onStart {
@@ -73,5 +79,9 @@ class HomeViewModel
 
   fun updateBrand(brand: String) = viewModelScope.launch(Dispatchers.IO) {
     dataStoreManager.updateBrand(brand)
+  }
+
+  fun showDialog() = viewModelScope.launch {
+    _uiEvent.emit(HomeUiEvent.ShowDialog)
   }
 }

@@ -10,11 +10,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,11 +24,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.olegkos.scannerdemo.core.util.CORNER_SHAPE
 import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
 import com.olegkos.scannerdemo.core.util.TONAL_ELEVATION
+import com.olegkos.scannerdemo.feature_decoding.ui.components.dialog.BrandAlertDialog
 import com.olegkos.scannerdemo.feature_decoding.ui.components.HomeAppBar
 import com.olegkos.scannerdemo.feature_decoding.ui.components.HomeContent
 import com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.BottomHomeDragHandler
 import com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.HomeBottomSheetContent
 import com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.QRBox
+import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,13 +40,34 @@ fun HomeScreen(modifier: Modifier = Modifier, onFAQButtonClicked: () -> Unit) {
     initial = listOf()
   )
   val uiState: State<HomeUiState> = viewModel.uiState.collectAsStateWithLifecycle()
-  var showBottomSheet by remember { mutableStateOf(false) }
+  var showBottomSheet by rememberSaveable { mutableStateOf(false) }
+  val showDialog = rememberSaveable { mutableStateOf(false) }
+
+  LaunchedEffect(key1 = showDialog) {
+    viewModel.uiEvent.collectLatest { homeUiEvent ->
+      when (homeUiEvent) {
+        HomeUiEvent.ShowDialog -> {
+          showDialog.value = true
+        }
+      }
+    }
+  }
+if (showDialog.value){
+  BrandAlertDialog(
+    brands = viewModel.brands,
+    onBrandClicked = {  }/*TODO*/,
+    onDismissRequest = { showDialog.value = false },
+  ) 
+}
   Scaffold(
     topBar = {
       HomeAppBar(
         modifier = modifier,
         title = uiState.value.brand,
-        onBrandButtonClicked = { showDialog() },
+        onBrandButtonClicked = {
+          showDialog.value = !showDialog.value
+          viewModel.showDialog()
+        },
         onFAQButtonClicked = onFAQButtonClicked,
       )
     },
@@ -91,6 +115,3 @@ fun HomeScreen(modifier: Modifier = Modifier, onFAQButtonClicked: () -> Unit) {
   }
 }
 
-private fun showDialog() {
-
-}
