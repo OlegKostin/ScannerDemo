@@ -10,12 +10,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.olegkos.scannerdemo.core.util.CORNER_SHAPE
 import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
 import com.olegkos.scannerdemo.core.util.TONAL_ELEVATION
@@ -28,12 +32,19 @@ import com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.QR
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier, onFAQButtonClicked: () -> Unit) {
+  val viewModel: HomeViewModel = hiltViewModel()
+  viewModel.serialBrandFlow.collectAsState(
+    initial = listOf()
+  )
+  val uiState: State<HomeUiState> = viewModel.uiState.collectAsStateWithLifecycle()
   var showBottomSheet by remember { mutableStateOf(false) }
   Scaffold(
     topBar = {
       HomeAppBar(
+        modifier = modifier,
+        title = uiState.value.brand,
         onBrandButtonClicked = { showDialog() },
-        onFAQButtonClicked = onFAQButtonClicked
+        onFAQButtonClicked = onFAQButtonClicked,
       )
     },
     floatingActionButton = {
@@ -69,8 +80,12 @@ fun HomeScreen(modifier: Modifier = Modifier, onFAQButtonClicked: () -> Unit) {
         }
       }
       HomeContent(
-        value = "",
-        onValueChange = {},
+        modifier = modifier,
+        productEntity = uiState.value.productEntity,
+        value = uiState.value.serial,
+        onValueChange = { serial ->
+          viewModel.updateSerial(serial)
+        },
       )
     }
   }

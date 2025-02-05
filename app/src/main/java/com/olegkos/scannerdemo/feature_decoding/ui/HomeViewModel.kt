@@ -23,8 +23,10 @@ private const val SERIAL_INDEX: Int = 0
 
 @HiltViewModel
 class HomeViewModel
-@Inject constructor(private val dataStoreManager: DataStoreManagement,
-  private val decoderFactory: DecoderFactory) : ViewModel() {
+@Inject constructor(
+  private val dataStoreManager: DataStoreManagement,
+  private val decoderFactory: DecoderFactory
+) : ViewModel() {
 
   private val brands: Array<Brands> = Brands.entries.toTypedArray()
   private val _uiState: MutableStateFlow<HomeUiState> =
@@ -60,7 +62,7 @@ class HomeViewModel
     val decoder = decoderFactory.createDecoder(Brands.valueOf(brand))
 
     if (!decoder.isCorrectSerial(serial))
-      return ProductEntity("Unspecified","Unspecified","Unspecified")
+      return ProductEntity("Unspecified", "Unspecified", "Unspecified")
     val productEntity = decoder.decodeSerial(serial)
     return productEntity
   }

@@ -19,11 +19,13 @@ import com.olegkos.scannerdemo.core.util.NORMAL_SPACING
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeAppBar(modifier: Modifier = Modifier, onBrandButtonClicked: () -> Unit,
+fun HomeAppBar(modifier: Modifier = Modifier,
+               title: String,
+               onBrandButtonClicked: () -> Unit,
                onFAQButtonClicked: () -> Unit) {
   TopAppBar(modifier = modifier,
     navigationIcon = { AppBarIcon() },
-    title = { AppBarTitle(title = "Samsung"/*TODO*/) },
+    title = { AppBarTitle(title = title) },
     actions = {
       AddMenuActions(
         modifier = modifier,

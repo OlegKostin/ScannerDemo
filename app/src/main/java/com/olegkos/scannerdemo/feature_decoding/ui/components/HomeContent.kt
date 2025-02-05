@@ -20,11 +20,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
+import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
 
 @Composable
 fun HomeContent(
   modifier: Modifier = Modifier,
   value: String,
+  productEntity: ProductEntity,
   onValueChange: (string: String) -> Unit
 ) {
 
@@ -37,19 +39,19 @@ fun HomeContent(
       modifier = modifier,
       drawableResId = R.drawable.ic_manufactored_type,
       stringResId = R.string.manufactored_type_image,
-      title = "Type"/*TODO*/
+      title = stringResource(R.string.type_with_value, productEntity.type)
     )
     ManufactureItem(
       modifier = modifier,
       drawableResId = R.drawable.ic_manufactor_location,
       stringResId = R.string.manufactored_location_image,
-      title = "Location"/*TODO*/
+      title = stringResource(R.string.made_in, productEntity.country)
     )
     ManufactureItem(
       modifier = modifier,
       drawableResId = R.drawable.ic_manufactored_date,
       stringResId = R.string.manufactored_date_image,
-      title = "Date"/*TODO*/
+      title = productEntity.date
     )
 
     SerialTextField(
@@ -114,8 +116,12 @@ fun SerialTextField(
   onValueChange: (string: String) -> Unit
 ) {
   OutlinedTextField(
-    modifier = modifier.padding(DOUBLE_SPACING).fillMaxWidth(),
-    value = value, label = { Text(text = stringResource(R.string.insert_serial_number)) }, onValueChange = onValueChange,
+    modifier = modifier
+      .padding(DOUBLE_SPACING)
+      .fillMaxWidth(),
+    value = value,
+    label = { Text(text = stringResource(R.string.insert_serial_number)) },
+    onValueChange = onValueChange,
   )
 
 }

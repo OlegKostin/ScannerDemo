@@ -4,6 +4,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.olegkos.scannerdemo.feature_decoding.data.entity.Brands
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -32,7 +33,7 @@ class DataStoreManager @Inject constructor(private val dataStore: DataStore<Pref
 
   override fun getBrand(): Flow<String> {
     val brandFlow: Flow<String> = dataStore.data.map { preference ->
-      preference[brandKey] ?: ""
+      preference[brandKey] ?: Brands.SAMSUNG.name
     }
     return brandFlow
   }

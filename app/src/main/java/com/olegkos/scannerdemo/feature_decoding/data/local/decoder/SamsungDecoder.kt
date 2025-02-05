@@ -1,5 +1,6 @@
 package com.olegkos.scannerdemo.feature_decoding.data.local.decoder
 
+import androidx.compose.ui.res.stringResource
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
 import com.olegkos.scannerdemo.feature_decoding.data.util.ProductData
@@ -57,7 +58,7 @@ class SamsungDecoder() : DecoderStrategy, ProductData<Char, Int, Char, String> {
     yearMap['X'] = "2024"
   }
 
-  override fun fillCountry() {
+  override fun fillCountry() { /*TODO get string res somehow*/
     countryMap['1'] = R.string.korea
     countryMap['3'] = R.string.korea
     countryMap['4'] = R.string.romania
@@ -94,7 +95,7 @@ class SamsungDecoder() : DecoderStrategy, ProductData<Char, Int, Char, String> {
 
   override fun getCountryFromSerial(serial: String): String {
     val countryChar = serial[5]
-    return "made in ${countryMap.getOrDefault(countryChar, UNSPECIFIED_COUNTRY)}"
+    return "${countryMap.getOrDefault(countryChar, UNSPECIFIED_COUNTRY)}"
   }
 
 
