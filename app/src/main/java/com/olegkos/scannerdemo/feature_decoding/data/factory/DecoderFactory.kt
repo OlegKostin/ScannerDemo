@@ -6,7 +6,7 @@ import com.olegkos.scannerdemo.feature_decoding.data.local.decoder.SamsungDecode
 import com.olegkos.scannerdemo.feature_decoding.data.entity.Brands
 
 
-class BrandAdapterFactory : IBrandAdapterFactory {
+class DecoderFactory : IDecoderFactory {
 
   override fun createDecoder(brands: Brands): DecoderStrategy {
     return when (brands) {
