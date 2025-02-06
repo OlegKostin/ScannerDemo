@@ -1,4 +1,5 @@
 [versions]
+permissions = "0.34.0"
 agp = "8.7.3"
 datastore = "1.1.2"
 kotlin = "2.0.20"
@@ -19,6 +20,7 @@ ksp = "2.0.20-1.0.24"
 camerax = "1.5.0-alpha05"
 
 [libraries]
+accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "permissions" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

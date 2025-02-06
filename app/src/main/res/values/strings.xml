@@ -43,8 +43,7 @@
     <string name="type_with_value">%s</string>
     <string name="made_in">Made in %s</string>
     <string name="dismiss">Dismiss</string>
-    <string name="x_permission_is_denied">%s Permission is denied permanently, please visit your app settings, and change it</string>
-    <string name="x_permission_is_required_for_scanning_qr">%s Permission is required for scanning QR codes</string>
-    <string name="request_x_permission">Request %s Permission</string>
-    <string name="camera">Camera</string>
+    <string name="permission_is_denied">Camera permission is denied permanently, please visit your app settings, and change it</string>
+    <string name="permission_is_required_for_scanning_qr">Camera permission is required for scanning QR codes</string>
+    <string name="request_x_permission">Request Camera Permission</string>
 </resources>

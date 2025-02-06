@@ -3,13 +3,13 @@ package com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.camera.EmptyBox
+import com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.camera.HandlingPermission
 
 @Composable
 fun HomeBottomSheetContent(modifier: Modifier = Modifier) {
 
-  Column (modifier = modifier) {
+  Column(modifier = modifier) {
     SerialScanText()
-    EmptyBox()
+    HandlingPermission()
   }
 }

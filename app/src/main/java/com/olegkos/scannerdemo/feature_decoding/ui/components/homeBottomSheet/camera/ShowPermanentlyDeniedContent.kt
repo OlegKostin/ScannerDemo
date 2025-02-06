@@ -16,15 +16,15 @@ import com.olegkos.scannerdemo.R
 fun ShowPermanentlyDeniedContent(modifier: Modifier = Modifier) {
   Box(
     modifier = modifier
+      .background(MaterialTheme.colorScheme.surface)
       .fillMaxSize(),
     contentAlignment = Alignment.Center
   )
   {
     Text(
       text = stringResource(
-        R.string.x_permission_is_denied,
-        stringResource(R.string.camera)
-      ), style = MaterialTheme.typography.displayMedium,
+        R.string.permission_is_denied
+      ), style = MaterialTheme.typography.displayLarge,
       textAlign = TextAlign.Center
     )
   }
