@@ -78,4 +78,6 @@ dependencies {
   implementation(libs.camera.view)
 
   implementation( libs.accompanist.permissions)
+
+  implementation (libs.barcode.scanning)
 }

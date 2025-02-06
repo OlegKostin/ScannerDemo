@@ -1,6 +1,8 @@
 package com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.camera
 
+import android.util.Log
 import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -11,6 +13,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.olegkos.scannerdemo.feature_decoding.ui.BarcodeImageAnalyser
+import java.util.concurrent.Executors
 
 @Composable
 fun CameraBox(modifier: Modifier = Modifier) {
@@ -23,7 +27,18 @@ fun CameraBox(modifier: Modifier = Modifier) {
   },
     update = { previewView ->
       val cameraProviderFuture = ProcessCameraProvider.getInstance(context = context)
-
+      val cameraExecutor = Executors.newSingleThreadExecutor()
+      val barcodeImageAnalyser = BarcodeImageAnalyser(
+        onBarcodeFound = {
+          Log.d("TAG", "barcode is ${it.first()}")
+        },
+        onBarcodeNotFound = {
+          Log.d("TAG", "barcode is not found")
+        },
+        onBarcodeFailed = {
+          Log.d("TAG", "barcode is failed ${it.toString()}")
+        }
+      )
       cameraProviderFuture.addListener(Runnable {
         // Camera provider is now guaranteed to be available
         val cameraProvider = cameraProviderFuture.get()
@@ -31,13 +46,20 @@ fun CameraBox(modifier: Modifier = Modifier) {
         // Set up the preview use case to display camera preview.
         val previewUseCase = Preview.Builder().build()
 
-        val imageAnalysisUseCase = null
+        val imageAnalysisUseCase = ImageAnalysis.Builder()
+          .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+          .build()
+        imageAnalysisUseCase.setAnalyzer(
+          cameraExecutor,
+          barcodeImageAnalyser
+        )
 
         // Choose the camera by requiring a lens facing
         val cameraSelector = CameraSelector.Builder()
           .requireLensFacing(CameraSelector.LENS_FACING_BACK)
           .build()
 
+        cameraProvider.unbindAll()
         // Attach use cases to the camera with the same lifecycle owner
         val camera = cameraProvider.bindToLifecycle(
           lifeCycleOwner, cameraSelector, previewUseCase, imageAnalysisUseCase
