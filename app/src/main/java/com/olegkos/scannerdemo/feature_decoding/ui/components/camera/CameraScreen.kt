@@ -1,4 +1,4 @@
-package com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.camera
+package com.olegkos.scannerdemo.feature_decoding.ui.components.camera
 
 import android.Manifest
 import androidx.compose.runtime.Composable
@@ -11,14 +11,14 @@ import com.google.accompanist.permissions.shouldShowRationale
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun HandlingPermission(modifier: Modifier = Modifier) {
+fun CameraScreen(modifier: Modifier = Modifier) {
   val cameraPermissionState = rememberPermissionState(Manifest.permission.CAMERA)
   LaunchedEffect(key1 = true) {
     cameraPermissionState.launchPermissionRequest()
   }
   when {
     cameraPermissionState.status.isGranted -> {
-      CameraBox() }
+      CameraContent() }
     cameraPermissionState.status.shouldShowRationale -> {
       ShowDeniedOnceContent(
         permissionState = cameraPermissionState

@@ -1,4 +1,4 @@
-package com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.camera
+package com.olegkos.scannerdemo.feature_decoding.ui.components.camera
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

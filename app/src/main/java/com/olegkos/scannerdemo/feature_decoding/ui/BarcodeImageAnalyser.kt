@@ -1,5 +1,7 @@
 package com.olegkos.scannerdemo.feature_decoding.ui
 
+import android.os.Handler
+import android.os.Looper
 import androidx.annotation.OptIn
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageAnalysis
@@ -14,8 +16,20 @@ class BarcodeImageAnalyser(
   val onBarcodeNotFound: () -> Unit,
   val onBarcodeFailed: (exception: Exception) -> Unit,
 ) : ImageAnalysis.Analyzer {
+
+  private val handler = Handler(Looper.getMainLooper())
+  private var isProcessing = false
+
   @OptIn(ExperimentalGetImage::class)
   override fun analyze(imageProxy: ImageProxy) {
+    if (isProcessing) {
+      imageProxy.close()
+      return
+    }
+
+    isProcessing = true
+
+
     val mediaImage = imageProxy.image
     if (mediaImage != null) {
       val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
@@ -33,6 +47,9 @@ class BarcodeImageAnalyser(
           onBarcodeFailed(exception)
         }.addOnCompleteListener {
           imageProxy.close()
+          handler.postDelayed({
+            isProcessing = false
+          }, 500)
         }
 
     }

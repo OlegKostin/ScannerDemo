@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import com.olegkos.scannerdemo.core.util.BOTTOM_HOME_DRAG_HANDLER_SIZE
 
 @Composable
 fun BottomHomeDragHandler(modifier: Modifier = Modifier) {
@@ -17,7 +18,7 @@ fun BottomHomeDragHandler(modifier: Modifier = Modifier) {
   Box(
     modifier = Modifier
       .fillMaxWidth(0.2f)
-      .height(8.dp)
+      .height(BOTTOM_HOME_DRAG_HANDLER_SIZE)
       .clip(RoundedCornerShape(50))
       .background(MaterialTheme.colorScheme.primary)
 

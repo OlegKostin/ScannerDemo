@@ -6,6 +6,8 @@ val ZERO_DP = 0.dp
 
 val NORMAL_SPACING = 8.dp
 
+val BOTTOM_HOME_DRAG_HANDLER_SIZE = 8.dp
+
 val DOUBLE_SPACING = 16.dp
 
 val TRIPLE_SPACING = 24.dp

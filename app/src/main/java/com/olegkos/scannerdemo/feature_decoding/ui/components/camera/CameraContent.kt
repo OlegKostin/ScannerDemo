@@ -1,4 +1,4 @@
-package com.olegkos.scannerdemo.feature_decoding.ui.components.homeBottomSheet.camera
+package com.olegkos.scannerdemo.feature_decoding.ui.components.camera
 
 import android.util.Log
 import androidx.camera.core.CameraSelector
@@ -17,7 +17,7 @@ import com.olegkos.scannerdemo.feature_decoding.ui.BarcodeImageAnalyser
 import java.util.concurrent.Executors
 
 @Composable
-fun CameraBox(modifier: Modifier = Modifier) {
+fun CameraContent(modifier: Modifier = Modifier) {
   val context = LocalContext.current
   val lifeCycleOwner = LocalLifecycleOwner.current
   AndroidView(modifier = modifier.fillMaxSize(), factory = { context ->
