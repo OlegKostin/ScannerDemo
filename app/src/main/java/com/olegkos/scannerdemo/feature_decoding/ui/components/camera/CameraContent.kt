@@ -13,11 +13,17 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.google.mlkit.vision.barcode.common.Barcode
 import com.olegkos.scannerdemo.feature_decoding.ui.BarcodeImageAnalyser
 import java.util.concurrent.Executors
 
 @Composable
-fun CameraContent(modifier: Modifier = Modifier) {
+fun CameraContent(
+  modifier: Modifier = Modifier,
+  onBarcodeFound: (barcodes: List<Barcode>) -> Unit,
+  onBarcodeNotFound: () -> Unit,
+  onBarcodeFailed: (exception: Exception) -> Unit,
+) {
   val context = LocalContext.current
   val lifeCycleOwner = LocalLifecycleOwner.current
   AndroidView(modifier = modifier.fillMaxSize(), factory = { context ->
@@ -29,14 +35,14 @@ fun CameraContent(modifier: Modifier = Modifier) {
       val cameraProviderFuture = ProcessCameraProvider.getInstance(context = context)
       val cameraExecutor = Executors.newSingleThreadExecutor()
       val barcodeImageAnalyser = BarcodeImageAnalyser(
-        onBarcodeFound = {
-          Log.d("TAG", "barcode is ${it.first()}")
+        onBarcodeFound = { barcodes ->
+          onBarcodeFound(barcodes)
         },
         onBarcodeNotFound = {
-          Log.d("TAG", "barcode is not found")
+          onBarcodeNotFound()
         },
-        onBarcodeFailed = {
-          Log.d("TAG", "barcode is failed ${it.toString()}")
+        onBarcodeFailed = {exception ->
+          onBarcodeFailed(exception)
         }
       )
       cameraProviderFuture.addListener(Runnable {

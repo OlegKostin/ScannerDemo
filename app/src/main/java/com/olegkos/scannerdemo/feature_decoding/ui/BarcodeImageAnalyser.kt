@@ -49,7 +49,7 @@ class BarcodeImageAnalyser(
           imageProxy.close()
           handler.postDelayed({
             isProcessing = false
-          }, 500)
+          }, 700)
         }
 
     }
