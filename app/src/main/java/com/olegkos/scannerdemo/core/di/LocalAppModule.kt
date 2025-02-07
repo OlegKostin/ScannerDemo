@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import com.olegkos.scannerdemo.feature_decoding.data.factory.DecoderFactory
+import com.olegkos.scannerdemo.feature_decoding.data.local.factory.DecoderFactory
 import com.olegkos.scannerdemo.feature_decoding.data.local.datastore.DataStoreManagement
 import com.olegkos.scannerdemo.feature_decoding.data.local.datastore.DataStoreManager
 import com.olegkos.scannerdemo.feature_onboarding.data.local.SharedPreferenceManagement

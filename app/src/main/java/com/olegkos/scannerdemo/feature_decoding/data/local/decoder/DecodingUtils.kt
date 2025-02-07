@@ -1,14 +1,11 @@
 package com.olegkos.scannerdemo.feature_decoding.data.local.decoder
 
-import com.olegkos.scannerdemo.feature_decoding.data.entity.Brands
-import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
-import com.olegkos.scannerdemo.feature_decoding.data.factory.DecoderFactory
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.Brands
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.ProductEntity
+import com.olegkos.scannerdemo.feature_decoding.data.local.factory.DecoderFactory
 
 
-const val UNSPECIFIED_TYPE = "UNSPECIFIED_TYPE"
-const val UNSPECIFIED_COUNTRY = "UNSPECIFIED_COUNTRY"
-const val UNSPECIFIED_YEAR = "UNSPECIFIED_YEAR"
-const val UNSPECIFIED_MONTH = "UNSPECIFIED_MONTH"
+
 
 class DecodingUtils(private val decoderFactory: DecoderFactory) {
 

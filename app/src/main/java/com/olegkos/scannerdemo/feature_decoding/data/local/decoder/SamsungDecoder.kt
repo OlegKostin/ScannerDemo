@@ -2,12 +2,13 @@ package com.olegkos.scannerdemo.feature_decoding.data.local.decoder
 
 import androidx.compose.ui.res.stringResource
 import com.olegkos.scannerdemo.R
-import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
+import com.olegkos.scannerdemo.core.util.UIText
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.ProductEntity
 import com.olegkos.scannerdemo.feature_decoding.data.util.ProductData
 
 const val TV_TYPE = '3'
 
-class SamsungDecoder() : DecoderStrategy, ProductData<Char, Int, Char, String> {
+class SamsungDecoder : DecoderStrategy, ProductData<Char, Int, Char, String> {
 
   override val countryMap: HashMap<Char, Int> = hashMapOf()
   override val monthMap: HashMap<Char, String> = hashMapOf()
@@ -58,7 +59,7 @@ class SamsungDecoder() : DecoderStrategy, ProductData<Char, Int, Char, String> {
     yearMap['X'] = "2024"
   }
 
-  override fun fillCountry() { /*TODO get string res somehow*/
+  override fun fillCountry() {
     countryMap['1'] = R.string.korea
     countryMap['3'] = R.string.korea
     countryMap['4'] = R.string.romania
@@ -84,29 +85,33 @@ class SamsungDecoder() : DecoderStrategy, ProductData<Char, Int, Char, String> {
   }
 
 
-  override fun getTypeFromSerial(serial: String): String {
+  override fun getTypeFromSerial(serial: String): UIText {
     val typeChar = serial[4]
     return if (typeChar == TV_TYPE)
-      "TV"
+      UIText.StringResource(resId = R.string.tv)
     else
-      UNSPECIFIED_TYPE
+      UIText.StringResource(R.string.unspecified_type)
 
   }
 
-  override fun getCountryFromSerial(serial: String): String {
+  override fun getCountryFromSerial(serial: String): UIText {
     val countryChar = serial[5]
-    return "${countryMap.getOrDefault(countryChar, UNSPECIFIED_COUNTRY)}"
+    return if (countryMap.containsKey(countryChar))
+      UIText.StringResource(resId = countryMap[countryChar]!!)
+    else UIText.StringResource(resId = R.string.unspecified_country)
   }
 
 
-  override fun getDateFromSerial(serial: String): String {
+  override fun getDateFromSerial(serial: String): UIText {
     val yearChar = serial[7]
     val monthString = serial[8]
 
-    val yearValue = yearMap.getOrDefault(yearChar, UNSPECIFIED_YEAR)
-    val monthValue = monthMap.getOrDefault(monthString, UNSPECIFIED_MONTH)
+    val yearValue = yearMap.getOrDefault(yearChar, UIText.StringResource(R.string.unspecified_year))
+    val monthValue = monthMap.getOrDefault(monthString, UIText.StringResource(R.string.unspecified_month))
 
-    return "made at $monthValue / $yearValue"
+    return UIText.DynamicString(
+      text = "$monthValue /$yearValue"
+    )
   }
 
 }

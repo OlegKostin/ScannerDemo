@@ -2,9 +2,11 @@ package com.olegkos.scannerdemo.feature_decoding.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.olegkos.scannerdemo.feature_decoding.data.entity.Brands
-import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
-import com.olegkos.scannerdemo.feature_decoding.data.factory.DecoderFactory
+import com.olegkos.scannerdemo.R
+import com.olegkos.scannerdemo.core.util.UIText
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.Brands
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.ProductEntity
+import com.olegkos.scannerdemo.feature_decoding.data.local.factory.DecoderFactory
 import com.olegkos.scannerdemo.feature_decoding.data.local.datastore.DataStoreManagement
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +34,7 @@ class HomeViewModel
   private val decoderFactory: DecoderFactory
 ) : ViewModel() {
 
-   val brands: Array<Brands> = Brands.entries.toTypedArray()
+  val brands: Array<Brands> = Brands.entries.toTypedArray()
   private val _uiState: MutableStateFlow<HomeUiState> =
     MutableStateFlow(
       HomeUiState(
@@ -69,7 +71,10 @@ class HomeViewModel
     val decoder = decoderFactory.createDecoder(Brands.valueOf(brand))
 
     if (!decoder.isCorrectSerial(serial))
-      return ProductEntity("Unspecified", "Unspecified", "Unspecified")
+      return ProductEntity(UIText.StringResource(R.string.unspecified_type),
+        UIText.StringResource(R.string.unspecified_country),
+
+        UIText.StringResource(R.string.unspecified_date))
     val productEntity = decoder.decodeSerial(serial)
     return productEntity
   }
@@ -84,5 +89,9 @@ class HomeViewModel
 
   fun showDialog() = viewModelScope.launch {
     _uiEvent.emit(HomeUiEvent.ShowDialog)
+  }
+
+  fun showSnackBar(localizedMessage: String) = viewModelScope.launch {
+    _uiEvent.emit(HomeUiEvent.ShowSnackBar(localizedMessage))
   }
 }

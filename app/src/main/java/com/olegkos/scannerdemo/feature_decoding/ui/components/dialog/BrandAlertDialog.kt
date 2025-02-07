@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.core.util.CORNER_SHAPE
 import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
-import com.olegkos.scannerdemo.feature_decoding.data.entity.Brands
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.Brands
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

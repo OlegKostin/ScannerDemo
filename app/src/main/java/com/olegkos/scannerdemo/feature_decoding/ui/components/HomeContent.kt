@@ -20,7 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
-import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.ProductEntity
 
 @Composable
 fun HomeContent(
@@ -39,19 +39,19 @@ fun HomeContent(
       modifier = modifier,
       drawableResId = R.drawable.ic_manufactored_type,
       stringResId = R.string.manufactored_type_image,
-      title = stringResource(R.string.type_with_value, productEntity.type)
+      title = stringResource(R.string.type_with_value, productEntity.type.asString())
     )
     ManufactureItem(
       modifier = modifier,
       drawableResId = R.drawable.ic_manufactor_location,
       stringResId = R.string.manufactored_location_image,
-      title = stringResource(R.string.made_in, productEntity.country)
+      title = stringResource(R.string.made_in, productEntity.country.asString())
     )
     ManufactureItem(
       modifier = modifier,
       drawableResId = R.drawable.ic_manufactored_date,
       stringResId = R.string.manufactored_date_image,
-      title = productEntity.date
+      title = productEntity.date.asString()
     )
 
     SerialTextField(

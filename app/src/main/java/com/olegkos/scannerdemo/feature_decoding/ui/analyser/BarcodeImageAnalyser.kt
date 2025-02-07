@@ -1,4 +1,4 @@
-package com.olegkos.scannerdemo.feature_decoding.ui
+package com.olegkos.scannerdemo.feature_decoding.ui.analyser
 
 import android.os.Handler
 import android.os.Looper

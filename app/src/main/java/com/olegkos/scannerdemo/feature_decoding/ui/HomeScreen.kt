@@ -9,12 +9,16 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -38,11 +42,12 @@ fun HomeScreen(
   modifier: Modifier = Modifier, onFAQButtonClicked: () -> Unit,
 ) {
   val viewModel: HomeViewModel = hiltViewModel()
-  val serialBrandState = viewModel.serialBrandFlow.collectAsState(
+  viewModel.serialBrandFlow.collectAsState(
     initial = listOf()
   )
   val uiState: State<HomeUiState> = viewModel.uiState.collectAsStateWithLifecycle()
 
+  val snackbarHostState = remember { SnackbarHostState() }
   val cameraBottomSheetState = rememberModalBottomSheetState()
   val coroutineScope = rememberCoroutineScope()
 
@@ -59,7 +64,16 @@ fun HomeScreen(
         HomeUiEvent.ShowDialog -> {
           showDialog.value = true
         }
+
+        is HomeUiEvent.ShowSnackBar -> coroutineScope.launch {
+          snackbarHostState.showSnackbar(
+            message = homeUiEvent.message,
+            actionLabel = "OK",
+            duration = SnackbarDuration.Short
+          )
+        }
       }
+
     }
   }
   if (showDialog.value) {
@@ -85,6 +99,9 @@ fun HomeScreen(
           onFAQButtonClicked = onFAQButtonClicked,
         )
       },
+      snackbarHost = {
+        SnackbarHost(hostState = snackbarHostState)
+      },
       floatingActionButton = {
         FloatingActionButton(
           onClick = {
@@ -108,13 +125,16 @@ fun HomeScreen(
             modifier = modifier,
             sheetState = cameraBottomSheetState,
             onDismissRequest = { coroutineScope.launch { cameraBottomSheetState.hide() } },
-            onBarcodeFound = {
+            onBarcodeFound = { barcodes: List<Barcode> ->
 
+              barcodes.first().rawValue?.let { viewModel.updateSerial(it) }
             },
             onBarcodeNotFound = {
+/*TODO*/
 
             },
-            onBarcodeFailed = {
+            onBarcodeFailed = { exception ->
+              exception.localizedMessage?.let { viewModel.showSnackBar(it) }
 
             },
           )

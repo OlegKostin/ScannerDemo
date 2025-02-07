@@ -1,6 +1,6 @@
 package com.olegkos.scannerdemo.feature_decoding.ui
 
-import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.ProductEntity
 
 data class HomeUiState(
   val isLoading: Boolean,

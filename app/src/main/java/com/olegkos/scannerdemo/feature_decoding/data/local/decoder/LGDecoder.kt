@@ -1,7 +1,8 @@
 package com.olegkos.scannerdemo.feature_decoding.data.local.decoder
 
 import com.olegkos.scannerdemo.R
-import com.olegkos.scannerdemo.feature_decoding.data.entity.ProductEntity
+import com.olegkos.scannerdemo.core.util.UIText
+import com.olegkos.scannerdemo.feature_decoding.data.local.entity.ProductEntity
 import com.olegkos.scannerdemo.feature_decoding.data.util.ProductData
 
 class LGDecoder() : DecoderStrategy, ProductData<String, Int, String, String> {
@@ -54,24 +55,26 @@ class LGDecoder() : DecoderStrategy, ProductData<String, Int, String, String> {
   }
 
 
-  override fun getTypeFromSerial(serial: String): String {
-    return "TV"
+  override fun getTypeFromSerial(serial: String): UIText {
+    return UIText.StringResource(R.string.tv)
 
   }
 
-  override fun getCountryFromSerial(serial: String): String {
+  override fun getCountryFromSerial(serial: String): UIText {
     val countryCode = serial.substring(3, 5)
-    return "made in " + countryMap.getOrDefault(countryCode, UNSPECIFIED_COUNTRY)
+    return if (countryMap.containsKey(countryCode))
+      UIText.StringResource(resId = countryMap[countryCode]!!)
+    else UIText.StringResource(resId = R.string.unspecified_country)
   }
 
-  override fun getDateFromSerial(serial: String): String {
+  override fun getDateFromSerial(serial: String): UIText {
     val yearChar = serial[0].toString()
     val monthString = serial.substring(1, 3)
 
-    val yearValue = yearMap.getOrDefault(yearChar, UNSPECIFIED_YEAR)
-    val monthValue = monthMap.getOrDefault(monthString, UNSPECIFIED_MONTH)
+    val yearValue = yearMap.getOrDefault(yearChar, UIText.StringResource(R.string.unspecified_year))
+    val monthValue = monthMap.getOrDefault(monthString, UIText.StringResource(R.string.unspecified_month))
 
-    return "made at $monthValue / $yearValue"
+    return UIText.DynamicString(text = "$monthValue / $yearValue")
   }
 
 }

@@ -1,6 +1,5 @@
 package com.olegkos.scannerdemo.feature_decoding.ui.components.camera
 
-import android.util.Log
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
@@ -14,7 +13,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.google.mlkit.vision.barcode.common.Barcode
-import com.olegkos.scannerdemo.feature_decoding.ui.BarcodeImageAnalyser
+import com.olegkos.scannerdemo.feature_decoding.ui.analyser.BarcodeImageAnalyser
 import java.util.concurrent.Executors
 
 @Composable
