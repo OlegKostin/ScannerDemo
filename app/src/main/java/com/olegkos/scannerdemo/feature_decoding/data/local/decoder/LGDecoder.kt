@@ -71,10 +71,12 @@ class LGDecoder() : DecoderStrategy, ProductData<String, Int, String, String> {
     val yearChar = serial[0].toString()
     val monthString = serial.substring(1, 3)
 
-    val yearValue = yearMap.getOrDefault(yearChar, UIText.StringResource(R.string.unspecified_year))
-    val monthValue = monthMap.getOrDefault(monthString, UIText.StringResource(R.string.unspecified_month))
+    var yearValue = "..."
+    var monthValue = "..."
+    if (yearMap.containsKey(yearChar)) yearValue = yearMap[yearChar]!!
+    if (monthMap.containsKey(monthString)) monthValue = monthMap[monthString]!!
 
-    return UIText.DynamicString(text = "$monthValue / $yearValue")
+    return UIText.DynamicString("$monthValue /$yearValue")
   }
 
 }

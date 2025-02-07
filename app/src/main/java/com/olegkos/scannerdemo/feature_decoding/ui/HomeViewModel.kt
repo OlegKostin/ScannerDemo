@@ -1,16 +1,17 @@
 package com.olegkos.scannerdemo.feature_decoding.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.olegkos.scannerdemo.R
 import com.olegkos.scannerdemo.core.util.UIText
+import com.olegkos.scannerdemo.feature_decoding.data.local.datastore.DataStoreManagement
 import com.olegkos.scannerdemo.feature_decoding.data.local.entity.Brands
 import com.olegkos.scannerdemo.feature_decoding.data.local.entity.ProductEntity
 import com.olegkos.scannerdemo.feature_decoding.data.local.factory.DecoderFactory
-import com.olegkos.scannerdemo.feature_decoding.data.local.datastore.DataStoreManagement
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -53,6 +55,7 @@ class HomeViewModel
 
   private val serialFlow: Flow<String> = dataStoreManager.getSerial()
   private val brandFlow: Flow<String> = dataStoreManager.getBrand()
+
   val serialBrandFlow = serialFlow.combine(brandFlow) { serial, brand ->
     listOf(serial, brand)
   }.onStart {
@@ -71,15 +74,18 @@ class HomeViewModel
     val decoder = decoderFactory.createDecoder(Brands.valueOf(brand))
 
     if (!decoder.isCorrectSerial(serial))
-      return ProductEntity(UIText.StringResource(R.string.unspecified_type),
+      return ProductEntity(
+        UIText.StringResource(R.string.unspecified_type),
         UIText.StringResource(R.string.unspecified_country),
 
-        UIText.StringResource(R.string.unspecified_date))
+        UIText.StringResource(R.string.unspecified_date)
+      )
     val productEntity = decoder.decodeSerial(serial)
     return productEntity
   }
 
   fun updateSerial(serial: String) = viewModelScope.launch(Dispatchers.IO) {
+    Log.d("TAG","$serial")
     dataStoreManager.updateSerial(serial)
   }
 

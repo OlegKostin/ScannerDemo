@@ -106,12 +106,13 @@ class SamsungDecoder : DecoderStrategy, ProductData<Char, Int, Char, String> {
     val yearChar = serial[7]
     val monthString = serial[8]
 
-    val yearValue = yearMap.getOrDefault(yearChar, UIText.StringResource(R.string.unspecified_year))
-    val monthValue = monthMap.getOrDefault(monthString, UIText.StringResource(R.string.unspecified_month))
 
-    return UIText.DynamicString(
-      text = "$monthValue /$yearValue"
-    )
+    var yearValue = "..."
+    var monthValue = "..."
+    if (yearMap.containsKey(yearChar)) yearValue = yearMap[yearChar]!!
+    if (monthMap.containsKey(monthString)) monthValue = monthMap[monthString]!!
+
+    return UIText.DynamicString("$monthValue /$yearValue")
   }
 
 }

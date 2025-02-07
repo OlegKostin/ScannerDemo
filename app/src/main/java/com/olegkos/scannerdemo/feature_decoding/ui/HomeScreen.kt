@@ -126,13 +126,13 @@ fun HomeScreen(
             sheetState = cameraBottomSheetState,
             onDismissRequest = { coroutineScope.launch { cameraBottomSheetState.hide() } },
             onBarcodeFound = { barcodes: List<Barcode> ->
-
+              coroutineScope.launch {
+                cameraBottomSheetState.hide()
+              }
               barcodes.first().rawValue?.let { viewModel.updateSerial(it) }
-            },
-            onBarcodeNotFound = {
-/*TODO*/
 
             },
+            onBarcodeNotFound = {},
             onBarcodeFailed = { exception ->
               exception.localizedMessage?.let { viewModel.showSnackBar(it) }
 
@@ -144,9 +144,8 @@ fun HomeScreen(
           modifier = modifier,
           productEntity = uiState.value.productEntity,
           value = uiState.value.serial,
-          onValueChange = { serial ->
-            viewModel.updateSerial(serial)
-          },
+          onValueChange =
+          viewModel::updateSerial
         )
       }
     }
