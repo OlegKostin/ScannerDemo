@@ -15,7 +15,10 @@ fun Brand(
   brandName: String, onBrandClicked: () -> Unit
 ) {
   NormalButton(
-    modifier = modifier.padding(TRIPLE_SPACING).padding(bottom = NORMAL_SPACING).fillMaxWidth(),
+    modifier = modifier
+      .padding(TRIPLE_SPACING)
+      .padding(bottom = NORMAL_SPACING)
+      .fillMaxWidth(),
     onClick = onBrandClicked
   ) {
     Text(text = brandName)

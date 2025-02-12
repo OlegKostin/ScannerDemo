@@ -22,7 +22,7 @@ fun NormalButton(
       contentColor = MaterialTheme.colorScheme.onSecondary
     ),
 
-  ) {
+    ) {
     content()
   }
 }

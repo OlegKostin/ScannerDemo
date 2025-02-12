@@ -14,7 +14,7 @@ import com.olegkos.scannerdemo.core.util.CORNER_SHAPE
 import com.olegkos.scannerdemo.core.util.DOUBLE_SPACING
 
 @Composable
-fun DismissButton(modifier: Modifier = Modifier, onDismissClicked:() ->Unit) {
+fun DismissButton(modifier: Modifier = Modifier, onDismissClicked: () -> Unit) {
   OutlinedButton(
     modifier = modifier
       .padding(horizontal = DOUBLE_SPACING, vertical = DOUBLE_SPACING)
@@ -24,4 +24,4 @@ fun DismissButton(modifier: Modifier = Modifier, onDismissClicked:() ->Unit) {
   ) {
     Text(text = stringResource(id = R.string.dismiss))
   }
-  }
+}

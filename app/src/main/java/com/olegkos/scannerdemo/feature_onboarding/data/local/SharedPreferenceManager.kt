@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 
 class SharedPreferenceManager
-  @Inject constructor(private val sharedPreferences: SharedPreferences) : SharedPreferenceManagement {
+@Inject constructor(private val sharedPreferences: SharedPreferences) : SharedPreferenceManagement {
 
 
   override fun updateFirstTime(isFirstTime: Boolean) {
@@ -15,7 +15,7 @@ class SharedPreferenceManager
     return sharedPreferences.getBoolean(KEY_IS_FIRST_TIME, true)
   }
 
-  companion object{
+  companion object {
 
     const val KEY_IS_FIRST_TIME = "is_first_time"
     const val SHARED_PREFERENCE_NAME = "shared_preference_name"

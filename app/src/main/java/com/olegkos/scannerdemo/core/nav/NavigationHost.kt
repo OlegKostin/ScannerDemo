@@ -14,9 +14,10 @@ import com.olegkos.scannerdemo.feature_onboarding.ui.OnBoardingScreen
 
 
 @Composable
-fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass,
-                   viewModel: MainViewModel = hiltViewModel<MainViewModel>()
-                   ) {
+fun NavigationHost(
+  modifier: Modifier, windowSizeClass: WindowWidthSizeClass,
+  viewModel: MainViewModel = hiltViewModel<MainViewModel>()
+) {
   val navController = rememberNavController()
   val startDestination = if (viewModel.firstTimeOrNot) Route.OnBoarding
   else Route.Home
@@ -38,7 +39,7 @@ fun NavigationHost(modifier: Modifier, windowSizeClass: WindowWidthSizeClass,
     }
     composable<Route.FAQ> {
       FAQScreen(
-        onBackButtonPressed ={ navController.popBackStack()}
+        onBackButtonPressed = { navController.popBackStack() }
       )
     }
     composable<Route.Home> {

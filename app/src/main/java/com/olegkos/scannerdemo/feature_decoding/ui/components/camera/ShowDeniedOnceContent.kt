@@ -22,8 +22,16 @@ fun ShowDeniedOnceContent(
   modifier: Modifier = Modifier,
   permissionState: PermissionState
 ) {
-  Column(modifier = modifier.background(MaterialTheme.colorScheme.surface).fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-    Text(modifier = Modifier.padding(NORMAL_SPACING).fillMaxHeight(0.2f),
+  Column(
+    modifier = modifier
+      .background(MaterialTheme.colorScheme.surface)
+      .fillMaxSize(),
+    horizontalAlignment = Alignment.CenterHorizontally
+  ) {
+    Text(
+      modifier = Modifier
+        .padding(NORMAL_SPACING)
+        .fillMaxHeight(0.2f),
       text = stringResource(R.string.permission_is_required_for_scanning_qr),
       style = MaterialTheme.typography.displayLarge
     )

@@ -11,7 +11,6 @@ import com.olegkos.scannerdemo.feature_decoding.data.local.entity.ProductEntity
 import com.olegkos.scannerdemo.feature_decoding.data.local.factory.DecoderFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +19,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
@@ -85,7 +83,7 @@ class HomeViewModel
   }
 
   fun updateSerial(serial: String) = viewModelScope.launch(Dispatchers.IO) {
-    Log.d("TAG","$serial")
+    Log.d("TAG", "$serial")
     dataStoreManager.updateSerial(serial)
   }
 

@@ -19,58 +19,64 @@ import com.olegkos.scannerdemo.core.util.NORMAL_SPACING
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeAppBar(modifier: Modifier = Modifier,
-               title: String,
-               onBrandButtonClicked: () -> Unit,
-               onFAQButtonClicked: () -> Unit) {
+fun HomeAppBar(
+  modifier: Modifier = Modifier,
+  title: String,
+  onBrandButtonClicked: () -> Unit,
+  onFAQButtonClicked: () -> Unit
+) {
   TopAppBar(modifier = modifier,
     navigationIcon = { AppBarIcon() },
     title = { AppBarTitle(title = title) },
     actions = {
       AddMenuActions(
         modifier = modifier,
-        onBrandClick =  onBrandButtonClicked,
+        onBrandClick = onBrandButtonClicked,
         onFAQClick = onFAQButtonClicked
-      )}
-    )
+      )
+    }
+  )
 }
 
 @Composable
 fun AppBarIcon(modifier: Modifier = Modifier) {
   Icon(
-    modifier = modifier.padding(NORMAL_SPACING), painter = painterResource(id = R.drawable.ic_scanner),
+    modifier = modifier.padding(NORMAL_SPACING),
+    painter = painterResource(id = R.drawable.ic_scanner),
     contentDescription = stringResource(R.string.app_icon),
-    tint =  Color.Unspecified
+    tint = Color.Unspecified
   )
 }
 
 @Composable
 fun AppBarTitle(modifier: Modifier = Modifier, title: String) {
-  Text(modifier = modifier,
-    text = title, style = MaterialTheme.typography.displayMedium)
+  Text(
+    modifier = modifier,
+    text = title, style = MaterialTheme.typography.displayMedium
+  )
 
 }
 
 @Composable
 fun AddMenuActions(
-  modifier : Modifier,
+  modifier: Modifier,
   onBrandClick: () -> Unit,
   onFAQClick: () -> Unit
 ) {
 
-    AddMenuItem(
-      modifier = modifier,
-      drawableResId = R.drawable.ic_apple,
-      stringResId = R.string.change_manufactor,
-      onClick = onBrandClick
-    )
-    AddMenuItem(
-      modifier = modifier,
-      drawableResId = R.drawable.ic_info,
-      stringResId = R.string.faq_btn_home_app,
-      onClick = onFAQClick
-    )
-  }
+  AddMenuItem(
+    modifier = modifier,
+    drawableResId = R.drawable.ic_apple,
+    stringResId = R.string.change_manufactor,
+    onClick = onBrandClick
+  )
+  AddMenuItem(
+    modifier = modifier,
+    drawableResId = R.drawable.ic_info,
+    stringResId = R.string.faq_btn_home_app,
+    onClick = onFAQClick
+  )
+}
 
 @Composable
 fun AddMenuItem(

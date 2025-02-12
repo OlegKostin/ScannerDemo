@@ -55,14 +55,14 @@ fun OnBoardingScreen(
       OnBoardingScrollingType.BOTTOM_NAVIGATION
     }
   }
-  val canClickGetStarted : Boolean = uiState.value.isLoading == false
+  val canClickGetStarted: Boolean = uiState.value.isLoading == false
   if (scrollingType == OnBoardingScrollingType.BOTTOM_NAVIGATION)
     HorizontalPagerLayout(
       modifier = modifier,
       pagerState = pagerState,
       scrollType = scrollingType,
-      canBeClickedGetStartedButton =canClickGetStarted,
-      onGetStartedButtonClicked = {viewModel.updateFirstTime()},
+      canBeClickedGetStartedButton = canClickGetStarted,
+      onGetStartedButtonClicked = { viewModel.updateFirstTime() },
     )
   else
     VerticalLayout(

@@ -12,6 +12,7 @@ val Oswald = FontFamily(
   Font(R.font.oswald_regular, FontWeight.Normal),
   Font(R.font.oswald_bold, FontWeight.Bold)
 )
+
 // Set of Material typography styles to start with
 // Set of Material typography styles to start with
 val Typography = Typography(

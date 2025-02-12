@@ -18,11 +18,11 @@ import com.olegkos.scannerdemo.core.util.YOUTUBE
 fun BottomButtons(modifier: Modifier = Modifier) {
   val uriHandler = LocalUriHandler.current
   Column {
-    ContactDeveloperButton(modifier){
+    ContactDeveloperButton(modifier) {
       uriHandler.openUri(YOUTUBE)
     }
-    RateAppButton(modifier){
-uriHandler.openUri(YOUTUBE)
+    RateAppButton(modifier) {
+      uriHandler.openUri(YOUTUBE)
     }
   }
 

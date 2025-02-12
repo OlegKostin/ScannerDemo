@@ -26,30 +26,31 @@ fun BrandAlertDialog(
   BasicAlertDialog(
     modifier = modifier,
     onDismissRequest = onDismissRequest
-  ) {  Card(
-    modifier = Modifier
-      .fillMaxWidth()
-      .padding(DOUBLE_SPACING),
-    shape = RoundedCornerShape(CORNER_SHAPE),
   ) {
-    AlertDialogTitle(title = stringResource(id = R.string.select_a_brand))
-    Column {
-      LazyColumn {
-        items(brands.size) {
-          Brand(
-            brandName = brands[it].name,
-            onBrandClicked = {
-              onBrandClicked(brands[it].name)
-              onDismissRequest()
-            }
-          )
+    Card(
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(DOUBLE_SPACING),
+      shape = RoundedCornerShape(CORNER_SHAPE),
+    ) {
+      AlertDialogTitle(title = stringResource(id = R.string.select_a_brand))
+      Column {
+        LazyColumn {
+          items(brands.size) {
+            Brand(
+              brandName = brands[it].name,
+              onBrandClicked = {
+                onBrandClicked(brands[it].name)
+                onDismissRequest()
+              }
+            )
+          }
         }
+        DismissButton(
+          onDismissClicked = onDismissRequest
+        )
       }
-      DismissButton(
-        onDismissClicked = onDismissRequest
-      )
     }
-  }
   }
 }
 

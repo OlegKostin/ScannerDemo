@@ -25,7 +25,12 @@ fun TopFAQBar(modifier: Modifier, onBackButtonPressed: () -> Unit) {
       containerColor = MaterialTheme.colorScheme.secondary, // Задаем цвет фона
       // titleContentColor = MaterialTheme.colorScheme.primary // Цвет текста
     ),
-    navigationIcon = { BackButtonIcon(modifier = modifier, onBackButtonPressed = onBackButtonPressed) },
+    navigationIcon = {
+      BackButtonIcon(
+        modifier = modifier,
+        onBackButtonPressed = onBackButtonPressed
+      )
+    },
   )
 }
 

@@ -40,7 +40,7 @@ fun CameraContent(
         onBarcodeNotFound = {
           onBarcodeNotFound()
         },
-        onBarcodeFailed = {exception ->
+        onBarcodeFailed = { exception ->
           onBarcodeFailed(exception)
         }
       )

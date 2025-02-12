@@ -59,7 +59,7 @@ fun FAQContent(modifier: Modifier) {
 }
 
 @Composable
-fun Question(modifier: Modifier , question: String, answer: String) {
+fun Question(modifier: Modifier, question: String, answer: String) {
 
   val isExpanded = remember {
     mutableStateOf(false)
@@ -86,7 +86,12 @@ fun Question(modifier: Modifier , question: String, answer: String) {
         contentDescription = stringResource(R.string.drop_down_icon),
         tint = MaterialTheme.colorScheme.primary
       )
-      Text(modifier = modifier.weight(1f) ,textAlign = TextAlign.Center, text = question, style = MaterialTheme.typography.bodyLarge)
+      Text(
+        modifier = modifier.weight(1f),
+        textAlign = TextAlign.Center,
+        text = question,
+        style = MaterialTheme.typography.bodyLarge
+      )
     }
     AnimatedVisibility(
       visible = isExpanded.value,
@@ -95,7 +100,7 @@ fun Question(modifier: Modifier , question: String, answer: String) {
           stiffness = Spring.StiffnessLow
         )
       ),
-      exit = shrinkVertically ()
+      exit = shrinkVertically()
     ) {
       Text(
         modifier = modifier

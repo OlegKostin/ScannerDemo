@@ -10,7 +10,8 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 
-class DataStoreManager @Inject constructor(private val dataStore: DataStore<Preferences>) : DataStoreManagement {
+class DataStoreManager @Inject constructor(private val dataStore: DataStore<Preferences>) :
+  DataStoreManagement {
   override suspend fun updateSerial(serial: String) {
     dataStore.edit { preferences ->
       preferences[serialKey] = serial

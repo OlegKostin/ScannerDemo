@@ -3,7 +3,6 @@ package com.olegkos.scannerdemo.feature_decoding.ui.components.camera
 import android.Manifest
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver

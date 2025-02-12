@@ -5,6 +5,7 @@ plugins {
   alias(libs.plugins.kotlin.serialization)
   alias(libs.plugins.ksp)
   alias(libs.plugins.hilt.plugin)
+  alias(libs.plugins.detekt)
 }
 
 android {
@@ -77,7 +78,7 @@ dependencies {
   implementation(libs.camera.lifecycle)
   implementation(libs.camera.view)
 
-  implementation( libs.accompanist.permissions)
+  implementation(libs.accompanist.permissions)
 
-  implementation (libs.barcode.scanning)
+  implementation(libs.barcode.scanning)
 }

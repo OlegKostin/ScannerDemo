@@ -1,5 +1,6 @@
 package com.olegkos.scannerdemo.core.ui
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,10 +10,8 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-
-
-import com.olegkos.scannerdemo.ui.theme.ScannerDemoTheme
 import com.olegkos.scannerdemo.core.nav.NavigationHost
+import com.olegkos.scannerdemo.ui.theme.ScannerDemoTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,13 +29,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ScannerScreen(
-  modifier: Modifier  = Modifier, widthSizeClass: WindowWidthSizeClass,
+  modifier: Modifier = Modifier, widthSizeClass: WindowWidthSizeClass,
 
-  ){
+  ) {
   ScannerDemoTheme {
-    NavigationHost(modifier = modifier,
+    NavigationHost(
+      modifier = modifier,
       windowSizeClass = widthSizeClass
-      )
+    )
   }
 
 }
